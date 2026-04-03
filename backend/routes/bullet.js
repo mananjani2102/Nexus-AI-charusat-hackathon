@@ -26,12 +26,12 @@ Return ONLY a valid JSON object (no markdown, no extra text):
 
     const OpenAI = require('openai');
     const openai = new OpenAI({
-      baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
-      apiKey: process.env.GEMINI_API_KEY || process.env.OPENROUTER_API_KEY,
+      baseURL: "https://api.groq.com/openai/v1",
+      apiKey: process.env.GROQ_API_KEY,
     });
     
     const response = await openai.chat.completions.create({
-      model: "gemini-1.5-flash",
+      model: "llama-3.1-8b-instant",
       messages: [{ role: "user", content: prompt }]
     });
     const raw = response.choices[0].message.content;

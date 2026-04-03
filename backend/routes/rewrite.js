@@ -79,12 +79,12 @@ No markdown. No code fences. No explanation.`;
       try {
         const OpenAI = require('openai');
         const openai = new OpenAI({
-          baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
-          apiKey: process.env.GEMINI_API_KEY || process.env.OPENROUTER_API_KEY,
+          baseURL: "https://api.groq.com/openai/v1",
+          apiKey: process.env.GROQ_API_KEY,
         });
         
         const response = await openai.chat.completions.create({
-          model: "gemini-1.5-flash",
+          model: "llama-3.1-8b-instant",
           messages: [{ 
             role: "user", 
             content: 'System: You are a JSON-only API. You output a JSON object mapping numbered keys to improved resume text. CRITICAL: keep each value the SAME length or shorter than the input. Never expand text. Never add sentences.\n\nUser: ' + htmlPrompt
@@ -159,12 +159,12 @@ Return ONLY raw JSON. No markdown. No code fences.
     try {
       const OpenAI = require('openai');
       const openai = new OpenAI({
-        baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
-        apiKey: process.env.GEMINI_API_KEY || process.env.OPENROUTER_API_KEY,
+        baseURL: "https://api.groq.com/openai/v1",
+        apiKey: process.env.GROQ_API_KEY,
       });
       
       const response = await openai.chat.completions.create({
-        model: "gemini-1.5-flash",
+        model: "llama-3.1-8b-instant",
         messages: [{ 
           role: "user", 
           content: 'System: You are a JSON-only API. Output raw JSON only. CRITICAL: the output resume must be the SAME length or shorter than the input. Never expand.\n\nUser: ' + plainTextPrompt
