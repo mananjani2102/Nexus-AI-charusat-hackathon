@@ -2,7 +2,6 @@ const express  = require('express');
 const multer   = require('multer');
 const pdfParse = require('pdf-parse');
 const mammoth  = require('mammoth');
-const Groq     = require('groq-sdk');
 const crypto   = require('crypto');
 const History  = require('../models/History');
 const { extractDocxWithStyles } = require('../utils/docxStyleExtractor');
@@ -10,7 +9,6 @@ const { storeDocxBuffer } = require('../utils/docxStore');
 
 const router  = express.Router();
 const upload  = multer({ storage: multer.memoryStorage() });
-const groq    = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 router.post('/analyze', upload.single('resume'), async (req, res) => {
   try {

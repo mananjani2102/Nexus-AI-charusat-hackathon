@@ -1,5 +1,4 @@
 const express = require('express');
-const Groq    = require('groq-sdk');
 const {
   extractTextMap,
   injectTextMap,
@@ -10,7 +9,6 @@ const { getDocxBuffer } = require('../utils/docxStore');
 const { modifyDocxText } = require('../utils/docxTextReplacer');
 
 const router = express.Router();
-const groq   = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 router.post('/rewrite-resume', async (req, res) => {
   try {

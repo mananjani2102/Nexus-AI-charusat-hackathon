@@ -1,8 +1,6 @@
 const express = require('express');
-const Groq    = require('groq-sdk');
 
 const router = express.Router();
-const groq   = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 // POST /api/interview-questions
 router.post('/interview-questions', async (req, res) => {
