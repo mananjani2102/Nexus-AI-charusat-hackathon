@@ -26,14 +26,11 @@ Return ONLY a valid JSON object (no markdown, no extra text):
   }
 }`;
 
-    const completion = await groq.chat.completions.create({
-      model: 'llama-3.3-70b-versatile',
-      max_tokens: 500,
-      temperature: 0.4,
-      messages: [{ role: 'user', content: prompt }],
-    });
-
-    const raw = completion.choices[0]?.message?.content || '';
+    const { GoogleGenerativeAI } = require('@google/generative-ai');
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const geminiModel = genAI.getGenerativeModel({ model: 'gemini-1.5-flash', generationConfig: { responseMimeType: 'application/json' } });
+    const result_ai = await geminiModel.generateContent(prompt);
+    const raw = result_ai.response.text();
 
     let result;
     try {

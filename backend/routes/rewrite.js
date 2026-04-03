@@ -79,23 +79,11 @@ No markdown. No code fences. No explanation.`;
 
       let raw = '';
       try {
-        const completion = await groq.chat.completions.create({
-          model: 'llama-3.3-70b-versatile',
-          response_format: { type: 'json_object' },
-          max_tokens: 4096,
-          temperature: 0.15,
-          messages: [
-            {
-              role: 'system',
-              content: 'You are a JSON-only API. You output a JSON object mapping numbered keys to improved resume text. CRITICAL: keep each value the SAME length or shorter than the input. Never expand text. Never add sentences.',
-            },
-            {
-              role: 'user',
-              content: htmlPrompt,
-            },
-          ],
-        });
-        raw = completion.choices[0]?.message?.content || '';
+        const { GoogleGenerativeAI } = require('@google/generative-ai');
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+        const geminiModel = genAI.getGenerativeModel({ model: 'gemini-1.5-flash', generationConfig: { responseMimeType: 'application/json' } });
+        const result_ai = await geminiModel.generateContent('System: You are a JSON-only API. You output a JSON object mapping numbered keys to improved resume text. CRITICAL: keep each value the SAME length or shorter than the input. Never expand text. Never add sentences.\n\nUser: ' + htmlPrompt);
+        raw = result_ai.response.text();
       } catch (groqErr) {
         console.warn('Groq API failed for rewrite (HTML). Falling back to Gemini...', groqErr.message);
         try {
@@ -194,23 +182,11 @@ Return ONLY raw JSON. No markdown. No code fences.
 
     let raw = '';
     try {
-      const completion = await groq.chat.completions.create({
-        model: 'llama-3.3-70b-versatile',
-        response_format: { type: 'json_object' },
-        max_tokens: 4096,
-        temperature: 0.15,
-        messages: [
-          {
-            role: 'system',
-            content: 'You are a JSON-only API. Output raw JSON only. CRITICAL: the output resume must be the SAME length or shorter than the input. Never expand.',
-          },
-          {
-            role: 'user',
-            content: plainTextPrompt,
-          },
-        ],
-      });
-      raw = completion.choices[0]?.message?.content || '';
+      const { GoogleGenerativeAI } = require('@google/generative-ai');
+      const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+      const geminiModel = genAI.getGenerativeModel({ model: 'gemini-1.5-flash', generationConfig: { responseMimeType: 'application/json' } });
+      const result_ai = await geminiModel.generateContent('System: You are a JSON-only API. Output raw JSON only. CRITICAL: the output resume must be the SAME length or shorter than the input. Never expand.\n\nUser: ' + plainTextPrompt);
+      raw = result_ai.response.text();
     } catch (groqErr) {
       console.warn('Groq API failed for rewrite (Plain Text). Falling back to Gemini...', groqErr.message);
       try {
