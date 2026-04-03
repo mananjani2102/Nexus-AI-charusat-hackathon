@@ -22,7 +22,7 @@
 
 <br>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=2&width=900&section=header" width="100%">
 
 </div>
 
@@ -78,7 +78,7 @@
 
 <br>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=2&width=900&section=header" width="100%">
 
 </div>
 
@@ -190,7 +190,7 @@ JWT-based login with bcrypt password hashing. Optional Firebase Auth integration
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=2&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -318,7 +318,7 @@ JWT-based login with bcrypt password hashing. Optional Firebase Auth integration
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=2&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -364,7 +364,7 @@ flowchart LR
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=2&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -447,7 +447,7 @@ nexus-ai/
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=2&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -548,7 +548,7 @@ npm run dev                 # → http://localhost:5173
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=2&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -590,7 +590,7 @@ npm run dev                 # → http://localhost:5173
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=2&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -697,7 +697,7 @@ npm run dev                 # → http://localhost:5173
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=2&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -726,7 +726,7 @@ Every AI route has its own `try/catch` with a hardcoded safe fallback — if the
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=2&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -766,7 +766,7 @@ Every AI route has its own `try/catch` with a hardcoded safe fallback — if the
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=2&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -828,7 +828,7 @@ Every AI route has its own `try/catch` with a hardcoded safe fallback — if the
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=2&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -852,7 +852,7 @@ This project is licensed under the [MIT License](LICENSE). Use it, fork it, ship
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=2&width=900&section=header" width="100%">
 
 <br>
 
