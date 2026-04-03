@@ -66,11 +66,17 @@ Return ONLY a valid JSON object with exactly these keys:
   "star_bullets": object with 3 original:improved pairs
 }`;
 
-    const { GoogleGenerativeAI } = require('@google/generative-ai');
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const geminiModel = genAI.getGenerativeModel({ model: 'gemini-1.5-flash', generationConfig: { responseMimeType: 'application/json' } });
-    const result_ai = await geminiModel.generateContent(prompt);
-    const raw = result_ai.response.text();
+    const OpenAI = require('openai');
+    const openai = new OpenAI({
+      baseURL: "https://openrouter.ai/api/v1",
+      apiKey: process.env.OPENROUTER_API_KEY,
+    });
+    
+    const response = await openai.chat.completions.create({
+      model: "meta-llama/llama-3.3-70b-instruct",
+      messages: [{ role: "user", content: prompt }]
+    });
+    const raw = response.choices[0].message.content;
     let result;
     try {
       const jsonMatch = raw.match(/\{[\s\S]*\}/);

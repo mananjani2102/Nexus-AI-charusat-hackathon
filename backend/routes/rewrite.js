@@ -79,46 +79,23 @@ No markdown. No code fences. No explanation.`;
 
       let raw = '';
       try {
-        const { GoogleGenerativeAI } = require('@google/generative-ai');
-        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-        const geminiModel = genAI.getGenerativeModel({ model: 'gemini-1.5-flash', generationConfig: { responseMimeType: 'application/json' } });
-        const result_ai = await geminiModel.generateContent('System: You are a JSON-only API. You output a JSON object mapping numbered keys to improved resume text. CRITICAL: keep each value the SAME length or shorter than the input. Never expand text. Never add sentences.\n\nUser: ' + htmlPrompt);
-        raw = result_ai.response.text();
-      } catch (groqErr) {
-        console.warn('Groq API failed for rewrite (HTML). Falling back to Gemini...', groqErr.message);
-        try {
-          const { GoogleGenerativeAI } = require('@google/generative-ai');
-          const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-          const modelsToTry = ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-pro'];
-          const prompt = `System: You are a JSON-only API. You output a JSON object mapping numbered keys to improved resume text. CRITICAL: keep each value the SAME length or shorter than the input. Never expand text. Never add sentences.\n\nUser: ${htmlPrompt}`;
-          
-          let success = false;
-          let lastErr = null;
-          
-          for (const modelName of modelsToTry) {
-            try {
-              const geminiModel = genAI.getGenerativeModel({ 
-                model: modelName,
-                generationConfig: { responseMimeType: 'application/json' }
-              });
-              const result = await geminiModel.generateContent(prompt);
-              raw = result.response.text();
-              success = true;
-              console.log(`Successfully used fallback model: ${modelName}`);
-              break; // Success! Exit the loop.
-            } catch (err) {
-              console.warn(`Gemini model ${modelName} failed:`, err.message);
-              lastErr = err;
-            }
-          }
-          
-          if (!success) {
-            throw lastErr || new Error("All Gemini fallback models exhausted.");
-          }
-        } catch (geminiErr) {
-          console.error('Both Groq and ALL Gemini fallbacks failed:', geminiErr.message);
-          return res.status(503).json({ error: 'All AI services (Groq & Gemini) are temporarily busy due to high traffic. Please wait 1 minute and try again.' });
-        }
+        const OpenAI = require('openai');
+        const openai = new OpenAI({
+          baseURL: "https://openrouter.ai/api/v1",
+          apiKey: process.env.OPENROUTER_API_KEY,
+        });
+        
+        const response = await openai.chat.completions.create({
+          model: "meta-llama/llama-3.3-70b-instruct",
+          messages: [{ 
+            role: "user", 
+            content: 'System: You are a JSON-only API. You output a JSON object mapping numbered keys to improved resume text. CRITICAL: keep each value the SAME length or shorter than the input. Never expand text. Never add sentences.\n\nUser: ' + htmlPrompt
+          }]
+        });
+        raw = response.choices[0].message.content;
+      } catch (err) {
+        console.error('OpenRouter AI failed:', err.message);
+        return res.status(503).json({ error: 'AI service is temporarily busy. Please wait and try again.' });
       }
       const improvedMap = parseImprovedMap(raw, map);
       const finalHtml = injectTextMap(template, map, improvedMap, junkKeys);
@@ -182,46 +159,23 @@ Return ONLY raw JSON. No markdown. No code fences.
 
     let raw = '';
     try {
-      const { GoogleGenerativeAI } = require('@google/generative-ai');
-      const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-      const geminiModel = genAI.getGenerativeModel({ model: 'gemini-1.5-flash', generationConfig: { responseMimeType: 'application/json' } });
-      const result_ai = await geminiModel.generateContent('System: You are a JSON-only API. Output raw JSON only. CRITICAL: the output resume must be the SAME length or shorter than the input. Never expand.\n\nUser: ' + plainTextPrompt);
-      raw = result_ai.response.text();
-    } catch (groqErr) {
-      console.warn('Groq API failed for rewrite (Plain Text). Falling back to Gemini...', groqErr.message);
-      try {
-        const { GoogleGenerativeAI } = require('@google/generative-ai');
-        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-        const modelsToTry = ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-pro'];
-        const prompt = `System: You are a JSON-only API. Output raw JSON only. CRITICAL: the output resume must be the SAME length or shorter than the input. Never expand.\n\nUser: ${plainTextPrompt}`;
-        
-        let success = false;
-        let lastErr = null;
-
-        for (const modelName of modelsToTry) {
-          try {
-            const geminiModel = genAI.getGenerativeModel({
-              model: modelName,
-              generationConfig: { responseMimeType: 'application/json' }
-            });
-            const result = await geminiModel.generateContent(prompt);
-            raw = result.response.text();
-            success = true;
-            console.log(`Successfully used fallback model: ${modelName}`);
-            break; // Success!
-          } catch (err) {
-            console.warn(`Gemini model ${modelName} failed:`, err.message);
-            lastErr = err;
-          }
-        }
-        
-        if (!success) {
-          throw lastErr || new Error("All Gemini fallback models exhausted.");
-        }
-      } catch (geminiErr) {
-        console.error('Both Groq and ALL Gemini fallbacks failed:', geminiErr.message);
-        return res.status(503).json({ error: 'All AI services (Groq & Gemini) are temporarily busy due to high traffic. Please wait 1 minute and try again.' });
-      }
+      const OpenAI = require('openai');
+      const openai = new OpenAI({
+        baseURL: "https://openrouter.ai/api/v1",
+        apiKey: process.env.OPENROUTER_API_KEY,
+      });
+      
+      const response = await openai.chat.completions.create({
+        model: "meta-llama/llama-3.3-70b-instruct",
+        messages: [{ 
+          role: "user", 
+          content: 'System: You are a JSON-only API. Output raw JSON only. CRITICAL: the output resume must be the SAME length or shorter than the input. Never expand.\n\nUser: ' + plainTextPrompt
+        }]
+      });
+      raw = response.choices[0].message.content;
+    } catch (err) {
+      console.error('OpenRouter AI failed:', err.message);
+      return res.status(503).json({ error: 'AI service is temporarily busy. Please wait and try again.' });
     }
 
     let result;
