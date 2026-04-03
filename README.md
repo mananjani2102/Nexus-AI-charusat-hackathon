@@ -9,7 +9,7 @@
 <br>
 
 <p align="center">
-  <a href="https://github.com/mananjani2102">
+  <a href="https://nexuss-ai.netlify.app/">
     <img src="https://img.shields.io/badge/%F0%9F%9A%80%20LIVE%20DEMO-VIEW%20PROJECT-7C3AED?style=for-the-badge&labelColor=0d0d0d" />
   </a>
   &nbsp;
@@ -599,7 +599,7 @@ npm run dev                 # → http://localhost:5173
 
 ## API Reference
 
-<img src="https://img.shields.io/badge/Base%20URL-http://localhost:4000/api-7C3AED?style=for-the-badge&labelColor=0d0d0d" />
+<img src="https://img.shields.io/badge/Base%20URL-https://nexus--ai-3o4n.onrender.com/api-7C3AED?style=for-the-badge&labelColor=0d0d0d" />
 
 <br><br>
 
@@ -737,7 +737,7 @@ Every AI route has its own `try/catch` with a hardcoded safe fallback — if the
 
 <img src="https://img.shields.io/badge/Backend-Render-7C3AED?style=for-the-badge&logo=render&logoColor=white&labelColor=0d0d0d" />
 &nbsp;
-<img src="https://img.shields.io/badge/Frontend-Vercel-3B82F6?style=for-the-badge&logo=vercel&logoColor=white&labelColor=0d0d0d" />
+<img src="https://img.shields.io/badge/Frontend-Netlify-3B82F6?style=for-the-badge&logo=netlify&logoColor=white&labelColor=0d0d0d" />
 &nbsp;
 <img src="https://img.shields.io/badge/Database-MongoDB%20Atlas-10B981?style=for-the-badge&logo=mongodb&logoColor=white&labelColor=0d0d0d" />
 
@@ -751,15 +751,15 @@ Every AI route has its own `try/catch` with a hardcoded safe fallback — if the
 2. Create a **Web Service** on [render.com](https://render.com).
 3. Build Command: `npm install` — Start Command: `npm start`
 4. Add all backend environment variables under **Environment** in the dashboard.
-5. Deploy. Your public URL: `https://nexus-ai-backend.onrender.com`
+5. Deploy. Live URL: `https://nexus-ai-3o4n.onrender.com`
 
-**Frontend → Vercel**
+**Frontend → Netlify**
 
 1. Push the project root to GitHub.
-2. Import on [vercel.com](https://vercel.com) — Framework: **Vite**
+2. Import on [netlify.com](https://netlify.com) — Framework: **Vite**
 3. Add all frontend environment variables.
-4. Set `VITE_API_URL` = `https://nexus-ai-backend.onrender.com/api`
-5. Deploy.
+4. Set `VITE_API_URL` = `https://nexus-ai-3o4n.onrender.com/api`
+5. Deploy. Live URL: `https://nexuss-ai.netlify.app/`
 
 > `docxStore.js` holds DOCX buffers in-memory. They clear on server restart. For production persistence, migrate to **Redis** or **AWS S3**.
 
@@ -856,33 +856,38 @@ This project is licensed under the [MIT License](LICENSE). Use it, fork it, ship
 
 <br>
 
-## The Builder
+## The Team
+
+*Built with ☕ and zero sleep at a hackathon.*
 
 <br>
 
-<img src="https://user-images.githubusercontent.com/74038190/212748830-4c709398-a386-4761-84d7-9e10b98fbe6e.gif" width="320" />
+<table>
+<tr>
+<td align="center" width="50%">
 
-<br>
+<img src="https://user-images.githubusercontent.com/74038190/212257454-16e3712e-945a-4ca2-b238-408ad0bf87e6.gif" width="80"/>
 
 ### Manan Jani
+<img src="https://img.shields.io/badge/Role-Frontend-7C3AED?style=for-the-badge&labelColor=0d0d0d" />
 
-*Full-stack developer who believes your resume should work as hard as you do.*
+*React · Vite · UI/UX · Firebase Auth*
+
+</td>
+<td align="center" width="50%">
+
+<img src="https://user-images.githubusercontent.com/74038190/212257468-1e9a91f1-b626-4baa-b15d-5c385dfa7ed2.gif" width="80"/>
+
+### Aman
+<img src="https://img.shields.io/badge/Role-Backend-3B82F6?style=for-the-badge&labelColor=0d0d0d" />
+
+*Node.js · Express · MongoDB · AI Pipeline*
+
+</td>
+</tr>
+</table>
 
 <br>
-
-<a href="https://github.com/mananjani2102">
-  <img src="https://img.shields.io/badge/GitHub-mananjani2102-7C3AED?style=for-the-badge&logo=github&logoColor=white&labelColor=0d0d0d" />
-</a>
-&nbsp;
-<a href="https://www.linkedin.com/in/mananjani2102/">
-  <img src="https://img.shields.io/badge/LinkedIn-mananjani2102-3B82F6?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0d0d0d" />
-</a>
-&nbsp;
-<a href="https://x.com/Mananjani2102">
-  <img src="https://img.shields.io/badge/X%20(Twitter)-Mananjani2102-10B981?style=for-the-badge&logo=x&logoColor=white&labelColor=0d0d0d" />
-</a>
-
-<br><br>
 
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=17&duration=2500&pause=1000&color=EF4444&center=true&vCenter=true&random=false&width=720&lines=If+your+resume+still+gets+rejected+after+Nexus+AI...;...with+all+due+respect%2C+that's+entirely+a+skill+issue.)](https://github.com/mananjani2102)
 
