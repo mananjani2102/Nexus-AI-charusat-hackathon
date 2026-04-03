@@ -1,6 +1,6 @@
 import axios from "axios";
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "/api",
+  baseURL: import.meta.env.VITE_API_URL || "https://nexus-ai-3o4n.onrender.com/api",
   timeout: 90000,
 });
 export const analyzeResume = async (file, jobRole, jdText) => {
