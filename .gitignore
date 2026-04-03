@@ -53,3 +53,7 @@ _landing_page_*.jsx
 resolve_conflict.js
 trim.js
 push_each_file.js
+*.bat
+*.ps1
+backend/test_imports.js
+frontend/src/pages/tmp_copy.js
