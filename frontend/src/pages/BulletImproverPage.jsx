@@ -84,7 +84,7 @@ export default function BulletImproverPage() {
     } catch (err) {
       setError(
         err?.response?.data?.error ||
-          "Backend unavailable. Check the server on port 4000.",
+          "Backend unavailable. Please try again later.",
       );
     } finally {
       setLocalLoading(false);

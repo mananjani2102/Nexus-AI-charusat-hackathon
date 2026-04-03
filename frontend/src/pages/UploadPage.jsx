@@ -102,7 +102,7 @@ export default function UploadPage() {
     } catch (err) {
       setError(
         err?.response?.data?.error ||
-          "Analysis failed. Make sure the backend is running on port 4000.",
+          "Analysis failed. Please try again later.",
       );
     } finally {
       setLoading(false);

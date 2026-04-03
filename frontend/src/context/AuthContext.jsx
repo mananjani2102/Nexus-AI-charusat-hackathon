@@ -3,11 +3,11 @@ import axios from "axios";
 
 const AuthContext = createContext(null);
 
-const API_URL = "/api";
+const API_URL = import.meta.env.VITE_API_URL || "https://nexus-ai-3o4n.onrender.com/api";
 
 const api = axios.create({
   baseURL: API_URL,
-  timeout: 15000,
+  timeout: 60000,
   headers: { "Content-Type": "application/json" },
 });
 
@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }) => {
       return userData;
     } catch (err) {
       if (err.code === "ERR_NETWORK" || err.message === "Network Error") {
-        throw new Error("Cannot connect to server. Make sure backend is running on port 4000.");
+        throw new Error("Cannot connect to server. Please try again later.");
       }
       if (err.response?.status === 400) {
         throw new Error(err.response.data?.error || "Email already registered.");
@@ -69,7 +69,7 @@ export const AuthProvider = ({ children }) => {
       return userData;
     } catch (err) {
       if (err.code === "ERR_NETWORK" || err.message === "Network Error") {
-        throw new Error("Cannot connect to server. Make sure backend is running on port 4000.");
+        throw new Error("Cannot connect to server. Please try again later.");
       }
       if (err.response?.status === 401) {
         throw new Error("Invalid email or password.");
