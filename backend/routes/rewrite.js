@@ -79,12 +79,12 @@ No markdown. No code fences. No explanation.`;
       try {
         const OpenAI = require('openai');
         const openai = new OpenAI({
-          baseURL: "https://openrouter.ai/api/v1",
-          apiKey: process.env.OPENROUTER_API_KEY,
+          baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
+          apiKey: process.env.GEMINI_API_KEY || process.env.OPENROUTER_API_KEY,
         });
         
         const response = await openai.chat.completions.create({
-          model: "google/gemma-3-27b-it:free",
+          model: "gemini-1.5-flash",
           messages: [{ 
             role: "user", 
             content: 'System: You are a JSON-only API. You output a JSON object mapping numbered keys to improved resume text. CRITICAL: keep each value the SAME length or shorter than the input. Never expand text. Never add sentences.\n\nUser: ' + htmlPrompt
@@ -93,7 +93,7 @@ No markdown. No code fences. No explanation.`;
         raw = response.choices[0].message.content;
       } catch (err) {
         console.error('OpenRouter AI failed:', err.message);
-        return res.status(503).json({ error: 'AI service is temporarily busy. Please wait and try again.' });
+        return res.status(503).json({ error: err.message });
       }
       const improvedMap = parseImprovedMap(raw, map);
       const finalHtml = injectTextMap(template, map, improvedMap, junkKeys);
@@ -159,12 +159,12 @@ Return ONLY raw JSON. No markdown. No code fences.
     try {
       const OpenAI = require('openai');
       const openai = new OpenAI({
-        baseURL: "https://openrouter.ai/api/v1",
-        apiKey: process.env.OPENROUTER_API_KEY,
+        baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
+        apiKey: process.env.GEMINI_API_KEY || process.env.OPENROUTER_API_KEY,
       });
       
       const response = await openai.chat.completions.create({
-        model: "google/gemma-3-27b-it:free",
+        model: "gemini-1.5-flash",
         messages: [{ 
           role: "user", 
           content: 'System: You are a JSON-only API. Output raw JSON only. CRITICAL: the output resume must be the SAME length or shorter than the input. Never expand.\n\nUser: ' + plainTextPrompt
@@ -173,7 +173,7 @@ Return ONLY raw JSON. No markdown. No code fences.
       raw = response.choices[0].message.content;
     } catch (err) {
       console.error('OpenRouter AI failed:', err.message);
-      return res.status(503).json({ error: 'AI service is temporarily busy. Please wait and try again.' });
+      return res.status(503).json({ error: err.message });
     }
 
     let result;

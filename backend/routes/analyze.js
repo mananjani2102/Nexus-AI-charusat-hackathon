@@ -66,12 +66,12 @@ Return ONLY a valid JSON object with exactly these keys:
 
     const OpenAI = require('openai');
     const openai = new OpenAI({
-      baseURL: "https://openrouter.ai/api/v1",
-      apiKey: process.env.OPENROUTER_API_KEY,
+      baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
+      apiKey: process.env.GEMINI_API_KEY || process.env.OPENROUTER_API_KEY,
     });
     
     const response = await openai.chat.completions.create({
-      model: "google/gemma-3-27b-it:free",
+      model: "gemini-1.5-flash",
       messages: [{ role: "user", content: prompt }]
     });
     const raw = response.choices[0].message.content;
