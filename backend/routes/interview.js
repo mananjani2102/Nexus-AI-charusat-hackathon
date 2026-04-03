@@ -31,7 +31,7 @@ Return ONLY a valid JSON object (no markdown, no extra text):
     });
     
     const response = await openai.chat.completions.create({
-      model: "meta-llama/llama-3.3-70b-instruct",
+      model: "google/gemini-2.0-flash-exp:free",
       messages: [{ role: "user", content: prompt }]
     });
     const raw = response.choices[0].message.content;
