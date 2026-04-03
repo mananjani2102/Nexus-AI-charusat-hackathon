@@ -71,7 +71,7 @@ Return ONLY a valid JSON object with exactly these keys:
     });
     
     const response = await openai.chat.completions.create({
-      model: "meta-llama/llama-3.1-8b-instruct:free",
+      model: "google/gemma-3-27b-it:free",
       messages: [{ role: "user", content: prompt }]
     });
     const raw = response.choices[0].message.content;

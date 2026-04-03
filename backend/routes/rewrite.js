@@ -84,7 +84,7 @@ No markdown. No code fences. No explanation.`;
         });
         
         const response = await openai.chat.completions.create({
-          model: "meta-llama/llama-3.1-8b-instruct:free",
+          model: "google/gemma-3-27b-it:free",
           messages: [{ 
             role: "user", 
             content: 'System: You are a JSON-only API. You output a JSON object mapping numbered keys to improved resume text. CRITICAL: keep each value the SAME length or shorter than the input. Never expand text. Never add sentences.\n\nUser: ' + htmlPrompt
@@ -164,7 +164,7 @@ Return ONLY raw JSON. No markdown. No code fences.
       });
       
       const response = await openai.chat.completions.create({
-        model: "meta-llama/llama-3.1-8b-instruct:free",
+        model: "google/gemma-3-27b-it:free",
         messages: [{ 
           role: "user", 
           content: 'System: You are a JSON-only API. Output raw JSON only. CRITICAL: the output resume must be the SAME length or shorter than the input. Never expand.\n\nUser: ' + plainTextPrompt
