@@ -1,0 +1,10 @@
+{
+  "name": "nexus-ai-root",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npx concurrently \"npm run dev-backend\" \"npm run dev-frontend\"",
+    "dev-backend": "cd nexus-backend && npm run dev",
+    "dev-frontend": "cd frontend && npm run dev",
+    "install-all": "npm install && cd nexus-backend && npm install && cd ../frontend && npm install"
+  }
+}
