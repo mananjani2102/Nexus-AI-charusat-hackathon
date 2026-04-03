@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,14&height=320&section=header&text=Nexus%20AI&fontSize=96&fontAlignY=38&animation=twinkling&fontColor=ffffff&desc=The+Resume+That+Gets+You+Hired+%E2%80%94+Built+by+AI&descAlignY=58&descSize=20&descColor=ffffff" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=320&section=header&text=Nexus%20AI&fontSize=96&fontAlignY=38&animation=twinkling&fontColor=ffffff&desc=The+Resume+That+Gets+You+Hired+%E2%80%94+Built+by+AI&descAlignY=58&descSize=20&descColor=ffffff" />
 
 <br>
 
@@ -22,7 +22,7 @@
 
 <br>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0,2,14&height=4&section=header" width="900">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
 
 </div>
 
@@ -78,7 +78,7 @@
 
 <br>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0,2,14&height=4&section=header" width="900">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
 
 </div>
 
@@ -190,7 +190,7 @@ JWT-based login with bcrypt password hashing. Optional Firebase Auth integration
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0,2,14&height=4&section=header" width="900">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -318,7 +318,7 @@ JWT-based login with bcrypt password hashing. Optional Firebase Auth integration
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0,2,14&height=4&section=header" width="900">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -364,7 +364,7 @@ flowchart LR
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0,2,14&height=4&section=header" width="900">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -447,7 +447,7 @@ nexus-ai/
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0,2,14&height=4&section=header" width="900">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -548,7 +548,7 @@ npm run dev                 # → http://localhost:5173
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0,2,14&height=4&section=header" width="900">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -590,7 +590,7 @@ npm run dev                 # → http://localhost:5173
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0,2,14&height=4&section=header" width="900">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -697,7 +697,7 @@ npm run dev                 # → http://localhost:5173
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0,2,14&height=4&section=header" width="900">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -726,7 +726,7 @@ Every AI route has its own `try/catch` with a hardcoded safe fallback — if the
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0,2,14&height=4&section=header" width="900">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -766,7 +766,7 @@ Every AI route has its own `try/catch` with a hardcoded safe fallback — if the
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0,2,14&height=4&section=header" width="900">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -828,7 +828,7 @@ Every AI route has its own `try/catch` with a hardcoded safe fallback — if the
 <br>
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0,2,14&height=4&section=header" width="900">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
 </div>
 
 <br>
@@ -852,7 +852,7 @@ This project is licensed under the [MIT License](LICENSE). Use it, fork it, ship
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0,2,14&height=4&section=header" width="900">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=6&width=900&section=header" width="100%">
 
 <br>
 
@@ -888,6 +888,6 @@ This project is licensed under the [MIT License](LICENSE). Use it, fork it, ship
 
 <br><br>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,14&height=200&section=footer&text=Go%20Get%20That%20Offer&fontSize=42&fontAlignY=70&animation=twinkling&fontColor=ffffff" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=footer&text=Go%20Get%20That%20Offer&fontSize=42&fontAlignY=70&animation=twinkling&fontColor=ffffff" />
 
 </div>
