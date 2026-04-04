@@ -9,6 +9,11 @@ import {
 import PageWrapper from '../components/PageWrapper';
 import DemoVideoPlayer from '../components/DemoVideoPlayer';
 import heroGraphic from '../assets/nexus-ai = bg - 03.png';
+/* 
+  Landing Page - Bento Grid Components
+  This array defines the feature cards shown in the hero section.
+  Staggered entrance animations are controlled by containerVariants.
+*/
 const bentoItems = [
     {
         title: 'AI-Powered Analysis',
@@ -62,37 +67,38 @@ const bentoItems = [
 ];
 
 const stats = [
-  { value: "94%", label: "Interview Rate Boost" },
-  { value: "2.4×", label: "More Callbacks" },
-  { value: "50K+", label: "Resumes Optimized" },
-  { value: "3 sec", label: "Avg Analysis Time" },
+    { value: "94%", label: "Interview Rate Boost" },
+    { value: "2.4×", label: "More Callbacks" },
+    { value: "50K+", label: "Resumes Optimized" },
+    { value: "3 sec", label: "Avg Analysis Time" },
 ];
 const ticker = ['ATS MATCHING', 'STAR BULLETS', 'CLARITY SCORE', 'IMPACT ANALYSIS', 'KEYWORD EXTRACTION'];
+
 const containerVariants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.12 } },
+    hidden: {},
+    show: { transition: { staggerChildren: 0.12 } },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
+    hidden: { opacity: 0, y: 24 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
 };
 
 const heroHeadlineContainer = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.16, delayChildren: 0.12 },
-  },
+    hidden: {},
+    show: {
+        transition: { staggerChildren: 0.16, delayChildren: 0.12 },
+    },
 };
 
 const heroHeadlineLine = {
-  hidden: { opacity: 0, y: 48, filter: "blur(10px)" },
-  show: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
-  },
+    hidden: { opacity: 0, y: 48, filter: "blur(10px)" },
+    show: {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
+    },
 };
 
 const testimonials = [
@@ -470,20 +476,18 @@ function RadialOrbitalTimeline() {
 
                             {/* Node circle */}
                             <div
-                                className={`w-12 h-12 rounded-full border-2 flex items-center justify-center cursor-pointer transition-all duration-300 ${
-                                    isActive
-                                        ? 'bg-primary text-background scale-150 border-primary shadow-[0_0_20px_rgba(51,204,51,0.5)]'
-                                        : 'bg-background border-primary/40 text-primary hover:border-primary/70 hover:shadow-[0_0_12px_rgba(51,204,51,0.2)]'
-                                }`}
+                                className={`w-12 h-12 rounded-full border-2 flex items-center justify-center cursor-pointer transition-all duration-300 ${isActive
+                                    ? 'bg-primary text-background scale-150 border-primary shadow-[0_0_20px_rgba(51,204,51,0.5)]'
+                                    : 'bg-background border-primary/40 text-primary hover:border-primary/70 hover:shadow-[0_0_12px_rgba(51,204,51,0.2)]'
+                                    }`}
                             >
                                 <Icon size={isActive ? 18 : 20} />
                             </div>
 
                             {/* Node label */}
                             <span
-                                className={`mt-2 text-xs font-semibold tracking-wider whitespace-nowrap transition-all duration-300 ${
-                                    isActive ? 'text-primary scale-110' : 'text-foreground/70'
-                                }`}
+                                className={`mt-2 text-xs font-semibold tracking-wider whitespace-nowrap transition-all duration-300 ${isActive ? 'text-primary scale-110' : 'text-foreground/70'
+                                    }`}
                             >
                                 {node.title}
                             </span>
@@ -825,11 +829,10 @@ function FaqSection() {
                                     {indexLabel}
                                 </span>
                                 <span
-                                    className={`flex-1 text-xl sm:text-2xl lg:text-3xl font-bold uppercase tracking-tight transition-all duration-300 ${
-                                        isOpen
-                                            ? 'text-primary'
-                                            : 'text-foreground/30 group-hover:text-foreground'
-                                    }`}
+                                    className={`flex-1 text-xl sm:text-2xl lg:text-3xl font-bold uppercase tracking-tight transition-all duration-300 ${isOpen
+                                        ? 'text-primary'
+                                        : 'text-foreground/30 group-hover:text-foreground'
+                                        }`}
                                     style={isOpen ? { textShadow: '0 0 40px rgba(51,204,51,0.15)' } : {}}
                                 >
                                     {faq.question}
@@ -841,9 +844,8 @@ function FaqSection() {
                                 >
                                     <ChevronDown
                                         size={20}
-                                        className={`transition-colors duration-300 ${
-                                            isOpen ? 'text-primary' : 'text-muted-foreground'
-                                        }`}
+                                        className={`transition-colors duration-300 ${isOpen ? 'text-primary' : 'text-muted-foreground'
+                                            }`}
                                     />
                                 </motion.div>
                             </button>
@@ -985,7 +987,7 @@ export default function LandingPage() {
                         </motion.div>
                     </div>
                     <div className="relative flex w-full min-h-[300px] items-center justify-center lg:min-h-[500px] mt-8 lg:mt-0">
-                        <motion.div 
+                        <motion.div
                             className="absolute z-0 h-[110%] w-[110%] rounded-full bg-primary/10 blur-[90px]"
                             animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0.8, 0.5] }}
                             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
@@ -1008,7 +1010,7 @@ export default function LandingPage() {
                                     loading="eager"
                                     decoding="async"
                                 />
-                                <motion.div 
+                                <motion.div
                                     className="absolute -right-4 lg:-right-10 top-[20%] rounded-xl border border-border/80 bg-background/95 p-3 shadow-2xl backdrop-blur-md hidden sm:block"
                                     initial={{ opacity: 0, x: 20 }}
                                     animate={{ opacity: 1, x: 0, y: [-4, 4, -4] }}
@@ -1024,7 +1026,7 @@ export default function LandingPage() {
                                         </div>
                                     </div>
                                 </motion.div>
-                                <motion.div 
+                                <motion.div
                                     className="absolute -left-4 lg:-left-12 bottom-[25%] rounded-xl border border-border/80 bg-background/95 p-3 shadow-2xl backdrop-blur-md hidden sm:block"
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0, y: [4, -4, 4] }}
@@ -1124,11 +1126,9 @@ export default function LandingPage() {
                                 variants={itemVariants}
                                 whileHover={{ y: -6, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
                                 onClick={() => navigate(item.link)}
-                                className={`group relative glass-card p-7 rounded-2xl border transition-all duration-500 overflow-hidden cursor-pointer ${
-                                    isWide ? 'md:col-span-2' : 'col-span-1'
-                                } ${
-                                    item.hasPersistentHover ? ac.persistBorder : 'border-border/60'
-                                } ${ac.border} ${ac.shadow}`}
+                                className={`group relative glass-card p-7 rounded-2xl border transition-all duration-500 overflow-hidden cursor-pointer ${isWide ? 'md:col-span-2' : 'col-span-1'
+                                    } ${item.hasPersistentHover ? ac.persistBorder : 'border-border/60'
+                                    } ${ac.border} ${ac.shadow}`}
                             >
                                 {/* Gradient overlay on hover */}
                                 <div className={`absolute inset-0 bg-gradient-to-br ${ac.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`} />
