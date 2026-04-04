@@ -29,6 +29,7 @@ import PageWrapper from "../components/PageWrapper";
 import ErrorBanner from "../components/ErrorBanner";
 import ScoreRing from "../components/ScoreRing";
 import { useResume } from "../context/ResumeContext";
+import { useAuth } from "../context/AuthContext";
 import { generateInterviewQuestions, rewriteResume } from "../services/api";
 
 const containerVariants = {
@@ -63,6 +64,7 @@ function containsHtml(str) {
 
 export default function DashboardPage() {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const { analysisResult, jobRole } = useResume();
   const [questions, setQuestions] = useState([]);
   const [loadingQ, setLoadingQ] = useState(false);
@@ -285,7 +287,7 @@ ${rewritten}
             <BarChart3 size={11} /> Analysis Dashboard
           </span>
           <h1 className="text-3xl font-black text-nexus-text">
-            Resume{" "}
+            {user?.name ? `Welcome, ${user.name.split(' ')[0]}!` : "Resume "}
             <span className="text-gradient-cyan">Intelligence Report</span>
           </h1>
           <p className="text-nexus-muted text-sm mt-1">
