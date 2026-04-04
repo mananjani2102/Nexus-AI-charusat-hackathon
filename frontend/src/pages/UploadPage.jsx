@@ -9,7 +9,6 @@ import {
   Loader2,
   ShieldCheck,
   ChevronDown,
-  AlertCircle,
 } from "lucide-react";
 import PageWrapper from "../components/PageWrapper";
 import ErrorBanner from "../components/ErrorBanner";
@@ -83,7 +82,11 @@ export default function UploadPage() {
     e.preventDefault();
     setDragging(true);
   };
-  const onDragLeave = () => setDragging(false);
+  const onDragLeave = (e) => {
+    e.preventDefault();
+    if (!e.currentTarget.contains(e.relatedTarget)) setDragging(false);
+  };
+  const openFilePicker = () => inputRef.current?.click();
   const removeFile = () => {
     setLocalFile(null);
     setFile(null);
@@ -135,104 +138,127 @@ export default function UploadPage() {
           transition={{ delay: 0.15 }}
           className="space-y-5 mt-5"
         >
-          <div
+          <input
+            ref={inputRef}
+            type="file"
+            accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            className="sr-only"
+            aria-label="Choose resume file"
+            onChange={(e) => handleFile(e.target.files?.[0])}
+          />
+
+          <motion.div
+            layout
             onDrop={onDrop}
             onDragOver={onDragOver}
             onDragLeave={onDragLeave}
-            onClick={() => !localFile && inputRef.current?.click()}
-            className={`relative rounded-2xl border-2 border-dashed transition-all duration-300 cursor-pointer
+            role={localFile ? undefined : "button"}
+            tabIndex={localFile ? undefined : 0}
+            onKeyDown={(e) => {
+              if (localFile) return;
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                openFilePicker();
+              }
+            }}
+            onClick={() => !localFile && openFilePicker()}
+            whileHover={!localFile ? { scale: 1.005 } : undefined}
+            whileTap={!localFile ? { scale: 0.995 } : undefined}
+            className={`relative rounded-2xl border-2 border-dashed transition-colors duration-300 outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-950
               ${dragging
-                ? "border-cyan-400 bg-cyan-500/8 scale-[1.01] shadow-glow-cyan"
+                ? "border-cyan-400 bg-cyan-500/10 shadow-[0_0_32px_-8px_rgba(34,211,238,0.35)]"
                 : localFile
-                  ? "border-emerald-400/50 bg-emerald-500/5 cursor-default"
-                  : "border-white/15 bg-white/3 hover:border-cyan-400/40 hover:bg-cyan-500/4"
-              } p-10`}
+                  ? "border-emerald-400/45 bg-emerald-500/[0.06] cursor-default"
+                  : "border-white/18 bg-white/[0.04] hover:border-cyan-400/45 hover:bg-cyan-500/[0.06] cursor-pointer"
+              } p-8 sm:p-10 min-h-[200px] flex flex-col justify-center`}
           >
-            <input
-              ref={inputRef}
-              type="file"
-              accept=".pdf,.docx"
-              className="hidden"
-              onChange={(e) => handleFile(e.target.files[0])}
-            />
             <AnimatePresence mode="wait">
               {localFile ? (
                 <motion.div
                   key="file"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="flex items-center gap-4"
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex flex-col sm:flex-row sm:items-center gap-4"
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  <div className="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center shrink-0">
-                    <FileText size={22} className="text-emerald-400" />
+                  <div className="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center shrink-0">
+                    <FileText size={26} className="text-emerald-400" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-nexus-text truncate">
+                    <p className="font-semibold text-nexus-text truncate text-base">
                       {localFile.name}
                     </p>
-                    <p className="text-xs text-nexus-muted mt-0.5">
-                      {(localFile.size / 1024).toFixed(0)} KB ·{" "}
-                      {localFile.type.includes("pdf") ? "PDF" : "DOCX"}
+                    <p className="text-xs text-nexus-muted mt-1">
+                      {(localFile.size / 1024).toFixed(1)} KB · {localFile.type.includes("pdf") ? "PDF" : "DOCX"} · Ready to analyze
                     </p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle size={20} className="text-emerald-400" />
+                  <div className="flex items-center gap-3 shrink-0">
+                    <CheckCircle size={22} className="text-emerald-400" />
                     <button
+                      type="button"
                       onClick={(e) => {
                         e.stopPropagation();
                         removeFile();
                       }}
-                      className="text-nexus-muted hover:text-rose-400 transition-colors"
+                      className="rounded-xl px-3 py-2 text-sm font-medium text-nexus-muted hover:text-rose-400 hover:bg-rose-500/10 transition-colors"
                     >
-                      <X size={18} />
+                      <span className="inline-flex items-center gap-1.5">
+                        <X size={16} /> Remove
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openFilePicker();
+                      }}
+                      className="rounded-xl px-3 py-2 text-sm font-medium text-primary border border-primary/30 hover:bg-primary/10 transition-colors"
+                    >
+                      Replace
                     </button>
                   </div>
                 </motion.div>
               ) : (
                 <motion.div
                   key="empty"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  className="text-center"
+                  transition={{ duration: 0.2 }}
+                  className="text-center py-4"
                 >
-                  <div
-                    className={`cursor-pointer min-h-[220px] rounded-[var(--radius)] flex flex-col items-center justify-center p-8 transition-all border-2 border-dashed backdrop-blur-xl ${dragging
-                      ? "border-primary bg-primary/5 scale-[0.995]"
-                      : "border-border hover:border-primary/50 bg-card/10"
-                      }`}
-                    onDrop={onDrop}
-                    onDragOver={onDragOver}
-                    onDragLeave={onDragLeave}
-                    onClick={() => inputRef.current.click()}
+                  <motion.div
+                    animate={dragging ? { y: [0, -4, 0] } : {}}
+                    transition={{ duration: 0.6, repeat: dragging ? Infinity : 0 }}
+                    className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/5 border border-white/10 mb-4"
                   >
                     <Upload
-                      size={26}
-                      className={`transition-colors ${dragging ? "text-cyan-400" : "text-nexus-muted"}`}
+                      size={30}
+                      className={dragging ? "text-cyan-400" : "text-nexus-muted"}
                     />
-                  </div>
-                  <p className="font-semibold text-nexus-text mb-1">
-                    {dragging ? "Drop it here!" : "Drag & drop your resume"}
+                  </motion.div>
+                  <p className="font-semibold text-nexus-text text-lg mb-1">
+                    {dragging ? "Release to upload" : "Drop your resume here"}
                   </p>
-                  <p className="text-sm text-nexus-muted mb-4">
-                    or click to browse files
+                  <p className="text-sm text-nexus-muted mb-5 max-w-xs mx-auto">
+                    PDF or Word (.docx), up to 5 MB. Click anywhere in this box to browse.
                   </p>
-                  <div className="flex gap-2 justify-center">
-                    <span className="badge bg-white/5 text-nexus-muted border-white/10 text-[10px]">
-                      PDF
-                    </span>
-                    <span className="badge bg-white/5 text-nexus-muted border-white/10 text-[10px]">
-                      DOCX
-                    </span>
-                    <span className="badge bg-white/5 text-nexus-muted border-white/10 text-[10px]">
-                      Max 5MB
-                    </span>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    {["PDF", "DOCX", "Max 5 MB"].map((t) => (
+                      <span
+                        key={t}
+                        className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-medium text-nexus-muted"
+                      >
+                        {t}
+                      </span>
+                    ))}
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </motion.div>
           <div>
             <label className="block text-sm font-semibold text-nexus-text mb-2">
               Target Job Role

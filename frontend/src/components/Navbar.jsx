@@ -1,9 +1,4 @@
 import { NavLink, useLocation } from "react-router-dom";
-/*
-  Nexus AI Navbar
-  Integrated with Watermelon UI Fluid-Tabs design system.
-  Features: Fluid Pill active state, blurred transitions, and theme-matched glassmorphism.
-*/
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Zap,
@@ -17,102 +12,48 @@ import {
   LogOut,
   Users,
   Mic,
+  ChevronDown,
+  MoreHorizontal,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import logoUrl from "../assets/nexus-logo-01.png";
 import { useAuth } from "../context/AuthContext";
 import { useResume } from "../context/ResumeContext";
 
-const navItems = [
+const primaryNavItems = [
   { to: "/", label: "Home", icon: Zap },
   { to: "/upload", label: "Upload", icon: Upload },
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { to: "/suggestions", label: "AI Fixes", icon: Lightbulb },
   { to: "/bullet", label: "Bullet Pro", icon: Sparkles },
+];
+
+const moreNavItems = [
   { to: "/history", label: "History", icon: History },
   { to: "/recruiter", label: "Recruiter", icon: Users },
   { to: "/interview", label: "Interview", icon: Mic },
 ];
 
-/* ────────────────────────────────────────────────────────────────
-   Exact Watermelon UI "Fluid Tabs" style
-   Source: https://registry.watermelon.sh/r/fluid-tabs.json
-   Adapted to JSX with NavLink routing
-   ──────────────────────────────────────────────────────────────── */
-const springTransition = {
-  type: "spring",
-  stiffness: 280,
-  damping: 25,
-  mass: 0.8,
-};
+const allNavItems = [...primaryNavItems, ...moreNavItems];
 
-function WatermelonFluidTabs({ items, location, historyCount }) {
-  return (
-    <div className="hidden md:flex relative items-center gap-1 rounded-full border-[1.6px] border-[#f5f1ebf4] bg-[#F5F1EB] px-1 py-1 sm:gap-2 dark:border-neutral-800 dark:bg-neutral-900">
-      {items.map(({ to, label, icon: Icon }) => {
-        const isActive =
-          to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
-        return (
-          <NavLink
-            key={to}
-            to={to}
-            end={to === "/"}
-            className="group relative rounded-full px-3 py-2.5 outline-none"
-          >
-            {isActive && (
-              <motion.div
-                layoutId="active-pill"
-                transition={springTransition}
-                className="absolute inset-0 rounded-full border border-[#fefefe]/90 bg-gradient-to-b from-[#fefefe] to-gray-50/80 shadow-xs dark:border-neutral-600/50 dark:from-neutral-700 dark:to-neutral-800/90"
-              />
-            )}
-
-            <motion.div
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              animate={{
-                filter: isActive
-                  ? ["blur(0px)", "blur(4px)", "blur(0px)"]
-                  : "blur(0px)",
-              }}
-              className={`relative z-10 flex items-center gap-1.5 transition-colors duration-200 ${isActive
-                ? "font-bold text-[#292926] dark:text-white"
-                : "font-semibold text-[#585652] dark:text-neutral-500 group-hover:text-[#292926] group-hover:dark:text-neutral-300"
-                }`}
-            >
-              <motion.div
-                animate={{ scale: isActive ? 1.03 : 1 }}
-                transition={{
-                  scale: { type: "spring", stiffness: 300, damping: 15 },
-                }}
-                className="flex shrink-0 items-center justify-center"
-              >
-                <Icon size={14} />
-              </motion.div>
-              <span className="text-xs tracking-tight whitespace-nowrap sm:text-sm">
-                {label}
-              </span>
-              {to === "/history" && historyCount > 0 && (
-                <span className="relative z-10 min-w-[16px] h-4 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-[9px] font-black px-1">
-                  {historyCount}
-                </span>
-              )}
-            </motion.div>
-          </NavLink>
-        );
-      })}
-    </div>
-  );
-}
-
-/* ────────────────────────────────────────────────────────────────
-   Main Navbar — composed from Watermelon components
-   ──────────────────────────────────────────────────────────────── */
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
   const location = useLocation();
   const { user, logout } = useAuth();
   const { history } = useResume();
+  const moreRef = useRef(null);
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (moreRef.current && !moreRef.current.contains(e.target)) {
+        setMoreOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
 
   useEffect(() => {
     if (!dropdownOpen) return;
@@ -121,11 +62,14 @@ export default function Navbar() {
     return () => document.removeEventListener("click", close);
   }, [dropdownOpen]);
 
+  const isMoreActive = moreNavItems.some((item) =>
+    item.to === "/" ? location.pathname === "/" : location.pathname.startsWith(item.to),
+  );
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <nav className="mt-3 glass-card px-4 py-3 flex items-center justify-between">
-          {/* Logo */}
           <NavLink to="/" className="flex items-center gap-2 group">
             <img
               src={logoUrl}
@@ -138,24 +82,107 @@ export default function Navbar() {
             </span>
           </NavLink>
 
-          {/* Center: Watermelon Fluid Tabs */}
-          <WatermelonFluidTabs
-            items={navItems}
-            location={location}
-            historyCount={history?.length || 0}
-          />
+          {/* Desktop: classic pill links + animated active dot */}
+          <div className="hidden md:flex items-center gap-1 relative">
+            {primaryNavItems.map(({ to, label, icon: Icon }) => {
+              const isActive =
+                to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
+              return (
+                <NavLink
+                  key={to}
+                  to={to}
+                  end={to === "/"}
+                  className={`nav-link relative ${isActive ? "active" : ""}`}
+                >
+                  <motion.span
+                    className="inline-flex items-center gap-1.5"
+                    initial={false}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Icon size={14} />
+                    {label}
+                  </motion.span>
+                  {isActive && (
+                    <motion.div
+                      layoutId="navbar-active-dot"
+                      className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </NavLink>
+              );
+            })}
 
-          {/* Right: Status + User */}
+            <div className="relative" ref={moreRef}>
+              <button
+                type="button"
+                onClick={() => setMoreOpen((prev) => !prev)}
+                className={`nav-link relative flex items-center gap-1 ${isMoreActive ? "active" : ""}`}
+              >
+                <MoreHorizontal size={14} />
+                More
+                <ChevronDown
+                  size={12}
+                  className={`transition-transform duration-200 ${moreOpen ? "rotate-180" : ""}`}
+                />
+                {isMoreActive && (
+                  <motion.div
+                    layoutId="navbar-active-dot"
+                    className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </button>
+
+              <AnimatePresence>
+                {moreOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -8, scale: 0.96 }}
+                    transition={{ duration: 0.18 }}
+                    className="absolute top-full right-0 mt-2 w-48 glass-card p-2 z-50 border border-white/10"
+                  >
+                    {moreNavItems.map(({ to, label, icon: Icon }) => {
+                      const isActive = location.pathname.startsWith(to);
+                      return (
+                        <NavLink
+                          key={to}
+                          to={to}
+                          onClick={() => setMoreOpen(false)}
+                          className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                            isActive
+                              ? "bg-primary/15 text-primary"
+                              : "text-nexus-muted hover:text-nexus-text hover:bg-white/5"
+                          }`}
+                        >
+                          <Icon size={15} className={isActive ? "text-primary" : ""} />
+                          {label}
+                          {to === "/history" && history?.length > 0 && (
+                            <span className="ml-auto min-w-[20px] h-5 rounded-full bg-primary text-background flex items-center justify-center text-[10px] font-bold px-1">
+                              {history.length}
+                            </span>
+                          )}
+                        </NavLink>
+                      );
+                    })}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+
           <div className="hidden md:flex items-center gap-3">
             <div className="flex items-center gap-1.5 text-xs text-nexus-muted mr-2">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               AI Online
             </div>
 
-            {/* User */}
             {user ? (
               <div className="relative" onClick={(e) => e.stopPropagation()}>
                 <button
+                  type="button"
                   onClick={() => setDropdownOpen((prev) => !prev)}
                   className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-primary/10 border border-primary/25 hover:bg-primary/15 transition-all"
                 >
@@ -185,9 +212,7 @@ export default function Navbar() {
                             <p className="text-sm font-bold text-[#333333] truncate">
                               {user.name || "User"}
                             </p>
-                            <p className="text-xs text-[#6e6e6e] truncate">
-                              {user.email}
-                            </p>
+                            <p className="text-xs text-[#6e6e6e] truncate">{user.email}</p>
                           </div>
                         </div>
                       </div>
@@ -209,6 +234,7 @@ export default function Navbar() {
                       </NavLink>
                       <div className="border-t border-[#f0f0f0] mt-1 pt-1">
                         <button
+                          type="button"
                           onClick={() => {
                             logout();
                             setDropdownOpen(false);
@@ -230,8 +256,8 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Mobile burger */}
           <button
+            type="button"
             className="md:hidden btn-ghost p-2"
             onClick={() => setMobileOpen((o) => !o)}
             aria-label="Toggle menu"
@@ -240,30 +266,32 @@ export default function Navbar() {
           </button>
         </nav>
 
-        {/* Mobile Menu */}
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            className="mt-2 glass-card px-4 py-3 flex flex-col gap-1 md:hidden"
-          >
-            {navItems.map(({ to, label, icon: Icon }) => (
-              <NavLink
-                key={to}
-                to={to}
-                end={to === "/"}
-                onClick={() => setMobileOpen(false)}
-                className={({ isActive }) =>
-                  `nav-link ${isActive ? "active" : ""}`
-                }
-              >
-                <Icon size={14} />
-                {label}
-              </NavLink>
-            ))}
-          </motion.div>
-        )}
+        <AnimatePresence>
+          {mobileOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="overflow-hidden"
+            >
+              <div className="mt-2 glass-card px-4 py-3 flex flex-col gap-1 md:hidden border border-white/10">
+                {allNavItems.map(({ to, label, icon: Icon }) => (
+                  <NavLink
+                    key={to}
+                    to={to}
+                    end={to === "/"}
+                    onClick={() => setMobileOpen(false)}
+                    className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+                  >
+                    <Icon size={14} />
+                    {label}
+                  </NavLink>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );

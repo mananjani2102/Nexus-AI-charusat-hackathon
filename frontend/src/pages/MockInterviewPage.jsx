@@ -619,6 +619,11 @@ export default function MockInterviewPage() {
               }`}>
                 {results.hire_recommendation}
               </span>
+              {results.overall_score === 0 && (
+                <p className="mt-4 text-sm text-amber-400/95 max-w-md mx-auto leading-relaxed">
+                  Overall score is 0 because no question had a real answer (we need at least ~8 words per answer to score content). Try again and type or speak a short paragraph for each question.
+                </p>
+              )}
             </motion.div>
 
             {/* Score rings */}
@@ -663,7 +668,7 @@ export default function MockInterviewPage() {
 
             {/* Strength / Improvement */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {results.top_strength && (
+              {results.top_strength && results.top_strength !== "—" && (
                 <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/25">
                   <p className="text-xs font-bold text-emerald-400 uppercase mb-1 flex items-center gap-1"><TrendingUp size={12} /> Top Strength</p>
                   <p className="text-sm text-nexus-text">{results.top_strength}</p>

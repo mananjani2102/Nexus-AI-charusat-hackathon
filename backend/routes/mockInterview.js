@@ -13,17 +13,30 @@ function clampScore(n) {
   return Math.max(0, Math.min(100, x));
 }
 
-/** Ensure one evaluation per question, aligned by index; fill gaps from the candidate's real answers. */
+function wordCount(answer) {
+  return String(answer || '')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean).length;
+}
+
+/** At least this many words = "answered" for scoring (below = treat as skipped / no rating). */
+const MIN_WORDS_FOR_SCORE = 8;
+
+function hasSubstantiveAnswer(item) {
+  return wordCount(item.answer) >= MIN_WORDS_FOR_SCORE;
+}
+
+/** Ensure one evaluation per question; never trust model scores for empty/skipped answers. */
 function normalizeInterviewResult(raw, qa) {
   const n = qa.length;
   const evalsIn = Array.isArray(raw?.evaluations) ? raw.evaluations : [];
 
   const fallbackForIndex = (i, item) => {
-    const ans = String(item.answer || '').trim();
-    const words = ans ? ans.split(/\s+/).filter(Boolean).length : 0;
-    const answered = words >= 8;
+    const answered = hasSubstantiveAnswer(item);
+    const words = wordCount(item.answer);
     const content = answered ? clampScore(42 + Math.min(38, words)) : 0;
-    const delivery = answered ? clampScore((item.confidenceScore || 60)) : 0;
+    const delivery = answered ? clampScore(item.confidenceScore || 60) : 0;
     const overall = answered ? clampScore(Math.round(content * 0.55 + delivery * 0.45)) : 0;
     return {
       id: i + 1,
@@ -32,7 +45,7 @@ function normalizeInterviewResult(raw, qa) {
       overall_score: overall,
       feedback: answered
         ? 'You shared enough detail to evaluate. Next time lead with a clear situation, your actions, and a measurable result.'
-        : 'This response was missing or too short. Aim for at least 2–3 sentences even if you are unsure.',
+        : 'No answer was provided (or it was too short). This question scores 0 until you share at least a few real sentences.',
       ideal_answer:
         'A strong answer states the context, what you did (tools, decisions), and the outcome with one number or concrete detail.',
       keyword_hits: answered ? ['substance'] : [],
@@ -42,6 +55,22 @@ function normalizeInterviewResult(raw, qa) {
   const evaluations = qa.map((item, i) => {
     const ev = evalsIn[i] || {};
     const fb = fallbackForIndex(i, item);
+
+    if (!hasSubstantiveAnswer(item)) {
+      return {
+        id: i + 1,
+        content_score: 0,
+        delivery_score: 0,
+        overall_score: 0,
+        feedback: fb.feedback,
+        ideal_answer:
+          typeof ev.ideal_answer === 'string' && ev.ideal_answer.trim().length > 15
+            ? ev.ideal_answer.trim()
+            : fb.ideal_answer,
+        keyword_hits: [],
+      };
+    }
+
     return {
       id: i + 1,
       content_score: clampScore(ev.content_score ?? fb.content_score),
@@ -59,41 +88,61 @@ function normalizeInterviewResult(raw, qa) {
     };
   });
 
+  const answeredCount = qa.filter(hasSubstantiveAnswer).length;
+
   const avgFromEvals = evaluations.length
     ? Math.round(evaluations.reduce((s, e) => s + e.overall_score, 0) / evaluations.length)
     : 0;
-  const overall_score = raw?.overall_score != null ? clampScore(raw.overall_score) : avgFromEvals;
 
-  const answeredCount = qa.filter((q) => String(q.answer || '').trim().split(/\s+/).filter(Boolean).length >= 8).length;
+  const overall_score = answeredCount === 0 ? 0 : avgFromEvals;
+
+  const defaultFeedback =
+    answeredCount === 0
+      ? 'No substantive answers were submitted. Complete the interview with real responses (at least a short paragraph per question) to receive a meaningful score.'
+      : `You gave substantive answers to ${answeredCount} of ${n} questions. Use the per-question feedback to improve structure and examples.`;
+
+  let hire_recommendation = 'No';
+  if (answeredCount === 0) {
+    hire_recommendation = 'No';
+  } else if (['Strong Yes', 'Yes', 'Maybe', 'No'].includes(raw?.hire_recommendation)) {
+    hire_recommendation = raw.hire_recommendation;
+    if (overall_score < 40 && hire_recommendation === 'Strong Yes') hire_recommendation = 'Maybe';
+    if (overall_score < 25 && (hire_recommendation === 'Yes' || hire_recommendation === 'Strong Yes'))
+      hire_recommendation = 'No';
+  } else if (overall_score >= 75 && answeredCount === n) {
+    hire_recommendation = 'Yes';
+  } else if (overall_score >= 45) {
+    hire_recommendation = 'Maybe';
+  }
 
   return {
     evaluations,
     overall_score,
     overall_feedback:
-      typeof raw?.overall_feedback === 'string' && raw.overall_feedback.trim().length > 20
+      typeof raw?.overall_feedback === 'string' && raw.overall_feedback.trim().length > 20 && answeredCount > 0
         ? raw.overall_feedback.trim()
-        : `You gave substantive answers to ${answeredCount} of ${n} questions. Use the per-question feedback to improve structure and examples.`,
-    hire_recommendation: ['Strong Yes', 'Yes', 'Maybe', 'No'].includes(raw?.hire_recommendation)
-      ? raw.hire_recommendation
-      : overall_score >= 80
-        ? 'Yes'
-        : overall_score >= 55
-          ? 'Maybe'
-          : 'No',
+        : defaultFeedback,
+    hire_recommendation,
     speech_verdict:
-      typeof raw?.speech_verdict === 'string' && raw.speech_verdict.trim().length > 8
-        ? raw.speech_verdict.trim()
-        : 'Focus on steady pacing, fewer fillers, and finishing with a clear takeaway.',
+      answeredCount === 0
+        ? 'No spoken or typed answers were long enough to assess delivery.'
+        : typeof raw?.speech_verdict === 'string' && raw.speech_verdict.trim().length > 8
+          ? raw.speech_verdict.trim()
+          : 'Focus on steady pacing, fewer fillers, and finishing with a clear takeaway.',
     top_strength:
-      typeof raw?.top_strength === 'string' && raw.top_strength.trim().length > 5
-        ? raw.top_strength.trim()
-        : answeredCount >= 3
-          ? 'You attempted most questions with real detail'
-          : 'You engaged with the mock interview format',
+      answeredCount === 0
+        ? '—'
+        : typeof raw?.top_strength === 'string' && raw.top_strength.trim().length > 5
+          ? raw.top_strength.trim()
+          : answeredCount >= 3
+            ? 'You attempted most questions with real detail'
+            : 'You provided at least one answer we could score',
     top_improvement:
-      typeof raw?.top_improvement === 'string' && raw.top_improvement.trim().length > 5
-        ? raw.top_improvement.trim()
-        : 'Structure answers: context → action → result (add one metric where possible)',
+      answeredCount === 0
+        ? 'Answer each question with at least 8+ words so the AI can evaluate your content.'
+        : typeof raw?.top_improvement === 'string' && raw.top_improvement.trim().length > 5
+          ? raw.top_improvement.trim()
+          : 'Structure answers: context → action → result (add one metric where possible)',
   };
 }
 
@@ -223,6 +272,8 @@ ${qaBlock}
 Speech Stats: avg WPM=${speechStats.avgWPM || 0}, total fillers=${speechStats.totalFillers || 0}, avg confidence=${speechStats.avgConfidence || 0}
 
 CRITICAL: Return ONLY valid JSON. The "evaluations" array MUST contain exactly ${qCount} objects, in order for Q1 through Q${qCount} (same order as above). Each evaluation must reference that question's actual answer text.
+
+If an answer is empty, "[SKIPPED]", or fewer than 8 words, you MUST set content_score, delivery_score, and overall_score to 0 for that question. Do not invent praise or mid-range scores for missing answers.
 
 Return ONLY a valid JSON object:
 {
