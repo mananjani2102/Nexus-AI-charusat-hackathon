@@ -15,6 +15,7 @@ import PageWrapper from "../components/PageWrapper";
 import ErrorBanner from "../components/ErrorBanner";
 import { useResume } from "../context/ResumeContext";
 import { analyzeResume } from "../services/api";
+import { LabeledProgressIndicator } from "../components/Watermelon/LabeledProgressIndicator";
 const JOB_ROLES = [
   "Software Engineer",
   "Senior Software Engineer",
@@ -102,7 +103,7 @@ export default function UploadPage() {
     } catch (err) {
       setError(
         err?.response?.data?.error ||
-          "Analysis failed. Please try again later.",
+        "Analysis failed. Please try again later.",
       );
     } finally {
       setLoading(false);
@@ -140,12 +141,11 @@ export default function UploadPage() {
             onDragLeave={onDragLeave}
             onClick={() => !localFile && inputRef.current?.click()}
             className={`relative rounded-2xl border-2 border-dashed transition-all duration-300 cursor-pointer
-              ${
-                dragging
-                  ? "border-cyan-400 bg-cyan-500/8 scale-[1.01] shadow-glow-cyan"
-                  : localFile
-                    ? "border-emerald-400/50 bg-emerald-500/5 cursor-default"
-                    : "border-white/15 bg-white/3 hover:border-cyan-400/40 hover:bg-cyan-500/4"
+              ${dragging
+                ? "border-cyan-400 bg-cyan-500/8 scale-[1.01] shadow-glow-cyan"
+                : localFile
+                  ? "border-emerald-400/50 bg-emerald-500/5 cursor-default"
+                  : "border-white/15 bg-white/3 hover:border-cyan-400/40 hover:bg-cyan-500/4"
               } p-10`}
           >
             <input
@@ -198,11 +198,14 @@ export default function UploadPage() {
                   className="text-center"
                 >
                   <div
-                    className={`w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center border transition-all ${
-                      dragging
-                        ? "border-cyan-400 bg-cyan-500/15"
-                        : "border-white/10 bg-white/5"
-                    }`}
+                    className={`cursor-pointer min-h-[220px] rounded-[var(--radius)] flex flex-col items-center justify-center p-8 transition-all border-2 border-dashed backdrop-blur-xl ${dragging
+                      ? "border-primary bg-primary/5 scale-[0.995]"
+                      : "border-border hover:border-primary/50 bg-card/10"
+                      }`}
+                    onDrop={onDrop}
+                    onDragOver={onDragOver}
+                    onDragLeave={onDragLeave}
+                    onClick={() => inputRef.current.click()}
                   >
                     <Upload
                       size={26}
@@ -281,9 +284,8 @@ export default function UploadPage() {
           <button
             onClick={handleAnalyze}
             disabled={loading || !localFile}
-            className={`w-full btn-primary justify-center py-4 text-base transition-all ${
-              !localFile || loading ? "opacity-50 cursor-not-allowed" : ""
-            }`}
+            className={`w-full btn-primary justify-center py-4 text-base transition-all ${!localFile || loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
           >
             {loading ? (
               <>
@@ -314,6 +316,38 @@ export default function UploadPage() {
           </div>
         </motion.div>
       </div>
+
+      <AnimatePresence>
+        {loading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-navy-950/80 backdrop-blur-xl flex items-center justify-center p-6"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="glass-card max-w-md w-full p-10 flex flex-col items-center"
+            >
+              <LabeledProgressIndicator
+                labels={[
+                  "Initializing AI Core...",
+                  "Extracting Semantic Data...",
+                  "Analyzing ATS Patterns...",
+                  "Generating Insights...",
+                  "Finalizing Response..."
+                ]}
+                progress="65%"
+              />
+              <p className="text-nexus-muted mt-8 text-sm animate-pulse text-center">
+                Our AI is optimizing your profile for 152+ ATS parameters...
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </PageWrapper>
   );
 }

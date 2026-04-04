@@ -8,11 +8,15 @@ import {
   Loader2,
   RotateCcw,
   ChevronRight,
+  Zap,
+  Type,
+  Wand2,
 } from "lucide-react";
 import PageWrapper from "../components/PageWrapper";
 import ErrorBanner from "../components/ErrorBanner";
 import { useResume } from "../context/ResumeContext";
 import { improveBullet } from "../services/api";
+import { ContextualAIBar } from "../components/Watermelon/ContextualAIBar";
 const EXAMPLES = [
   "Worked on the new website front-end.",
   "Helped with customer support tasks.",
@@ -84,7 +88,7 @@ export default function BulletImproverPage() {
     } catch (err) {
       setError(
         err?.response?.data?.error ||
-          "Backend unavailable. Please try again later.",
+        "Backend unavailable. Please try again later.",
       );
     } finally {
       setLocalLoading(false);
@@ -136,6 +140,27 @@ export default function BulletImproverPage() {
               <span className="text-xs text-nexus-muted">
                 {bullet.length} chars
               </span>
+            </div>
+
+            <div className="mt-6 flex justify-center">
+              <ContextualAIBar
+                placeholder="Ask AI to refine this bullet..."
+                onSend={(val) => {
+                  setBullet(prev => prev + " " + val);
+                  improve();
+                }}
+                tools={[
+                  { id: 'shorten', icon: <Zap size={16} /> },
+                  { id: 'professional', icon: <Type size={16} /> },
+                  { id: 'action', icon: <Wand2 size={16} /> }
+                ]}
+                onToolClick={(id) => {
+                  if (id === 'shorten') setBullet(prev => prev + " (make it concise)");
+                  if (id === 'professional') setBullet(prev => prev + " (make it more professional)");
+                  if (id === 'action') setBullet(prev => prev + " (add stronger action verbs)");
+                  improve();
+                }}
+              />
             </div>
           </div>
           <ErrorBanner message={error} onDismiss={() => setError(null)} />

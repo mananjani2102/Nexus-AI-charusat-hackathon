@@ -34,8 +34,9 @@ export default function ScoreRing({
             cy={cx}
             r={r}
             fill="none"
-            stroke="rgba(255,255,255,0.06)"
+            stroke="var(--border)"
             strokeWidth={thickness}
+            className="opacity-50"
           />
           <motion.circle
             cx={cx}
@@ -53,7 +54,7 @@ export default function ScoreRing({
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <motion.span
-            className="text-2xl font-bold text-white"
+            className="text-2xl font-bold"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6, duration: 0.4 }}
@@ -61,12 +62,12 @@ export default function ScoreRing({
           >
             {score}
           </motion.span>
-          <span className="text-[10px] text-nexus-muted font-medium tracking-wide uppercase mt-0.5">
+          <span className="text-[10px] text-muted-foreground font-medium tracking-wide uppercase">
             /100
           </span>
         </div>
       </div>
-      <span className="text-xs text-nexus-muted font-medium tracking-wide uppercase">
+      <span className="text-[11px] text-muted-foreground font-bold tracking-wider uppercase mt-1">
         {label}
       </span>
     </div>

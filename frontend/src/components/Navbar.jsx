@@ -1,4 +1,9 @@
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+/* 
+  Nexus AI Navbar 
+  Integrated with Watermelon UI Fluid-Tabs design system.
+  Features: Fluid Pill active state, blurred transitions, and theme-matched glassmorphism.
+*/
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Zap,
@@ -12,10 +17,11 @@ import {
   LogOut,
   Users,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logoUrl from "../assets/nexus-logo-01.png";
 import { useAuth } from "../context/AuthContext";
 import { useResume } from "../context/ResumeContext";
+
 const navItems = [
   { to: "/", label: "Home", icon: Zap },
   { to: "/upload", label: "Upload", icon: Upload },
@@ -25,17 +31,99 @@ const navItems = [
   { to: "/history", label: "History", icon: History },
   { to: "/recruiter", label: "Recruiter", icon: Users },
 ];
+
+/* ────────────────────────────────────────────────────────────────
+   Exact Watermelon UI "Fluid Tabs" style
+   Source: https://registry.watermelon.sh/r/fluid-tabs.json
+   Adapted to JSX with NavLink routing
+   ──────────────────────────────────────────────────────────────── */
+const springTransition = {
+  type: "spring",
+  stiffness: 280,
+  damping: 25,
+  mass: 0.8,
+};
+
+function WatermelonFluidTabs({ items, location, historyCount }) {
+  return (
+    <div className="hidden md:flex relative items-center gap-1 rounded-full border-[1.6px] border-[#f5f1ebf4] bg-[#F5F1EB] px-1 py-1 sm:gap-2 dark:border-neutral-800 dark:bg-neutral-900">
+      {items.map(({ to, label, icon: Icon }) => {
+        const isActive =
+          to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
+        return (
+          <NavLink
+            key={to}
+            to={to}
+            end={to === "/"}
+            className="group relative rounded-full px-3 py-2.5 outline-none"
+          >
+            {isActive && (
+              <motion.div
+                layoutId="active-pill"
+                transition={springTransition}
+                className="absolute inset-0 rounded-full border border-[#fefefe]/90 bg-gradient-to-b from-[#fefefe] to-gray-50/80 shadow-xs dark:border-neutral-600/50 dark:from-neutral-700 dark:to-neutral-800/90"
+              />
+            )}
+
+            <motion.div
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              animate={{
+                filter: isActive
+                  ? ["blur(0px)", "blur(4px)", "blur(0px)"]
+                  : "blur(0px)",
+              }}
+              className={`relative z-10 flex items-center gap-1.5 transition-colors duration-200 ${isActive
+                ? "font-bold text-[#292926] dark:text-white"
+                : "font-semibold text-[#585652] dark:text-neutral-500 group-hover:text-[#292926] group-hover:dark:text-neutral-300"
+                }`}
+            >
+              <motion.div
+                animate={{ scale: isActive ? 1.03 : 1 }}
+                transition={{
+                  scale: { type: "spring", stiffness: 300, damping: 15 },
+                }}
+                className="flex shrink-0 items-center justify-center"
+              >
+                <Icon size={14} />
+              </motion.div>
+              <span className="text-xs tracking-tight whitespace-nowrap sm:text-sm">
+                {label}
+              </span>
+              {to === "/history" && historyCount > 0 && (
+                <span className="relative z-10 min-w-[16px] h-4 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-[9px] font-black px-1">
+                  {historyCount}
+                </span>
+              )}
+            </motion.div>
+          </NavLink>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Main Navbar — composed from Watermelon components
+   ──────────────────────────────────────────────────────────────── */
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
   const { user, logout } = useAuth();
   const { history } = useResume();
+
+  useEffect(() => {
+    if (!dropdownOpen) return;
+    const close = () => setDropdownOpen(false);
+    document.addEventListener("click", close);
+    return () => document.removeEventListener("click", close);
+  }, [dropdownOpen]);
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <nav className="mt-3 glass-card px-4 py-3 flex items-center justify-between">
+          {/* Logo */}
           <NavLink to="/" className="flex items-center gap-2 group">
             <img
               src={logoUrl}
@@ -47,42 +135,24 @@ export default function Navbar() {
               <span className="text-nexus-text"> AI</span>
             </span>
           </NavLink>
-          <div className="hidden md:flex items-center gap-1 relative">
-            {navItems.map(({ to, label, icon: Icon }) => {
-              const isActive =
-                to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
-              return (
-                <NavLink
-                  key={to}
-                  to={to}
-                  end={to === "/"}
-                  className={`nav-link relative ${isActive ? "active" : ""}`}
-                >
-                  <Icon size={14} />
-                  {label}
-                  {to === "/history" && history?.length > 0 && (
-                    <span className="w-4 h-4 rounded-full bg-primary text-background flex items-center justify-center text-[9px] font-bold absolute -top-1 -right-1">
-                      {history.length}
-                    </span>
-                  )}
-                  {isActive && (
-                    <motion.div
-                      layoutId="nav-dot"
-                      className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
-                    />
-                  )}
-                </NavLink>
-              );
-            })}
-          </div>
+
+          {/* Center: Watermelon Fluid Tabs */}
+          <WatermelonFluidTabs
+            items={navItems}
+            location={location}
+            historyCount={history?.length || 0}
+          />
+
+          {/* Right: Status + User */}
           <div className="hidden md:flex items-center gap-3">
             <div className="flex items-center gap-1.5 text-xs text-nexus-muted mr-2">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               AI Online
             </div>
 
+            {/* User */}
             {user ? (
-              <div className="relative">
+              <div className="relative" onClick={(e) => e.stopPropagation()}>
                 <button
                   onClick={() => setDropdownOpen((prev) => !prev)}
                   className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-primary/10 border border-primary/25 hover:bg-primary/15 transition-all"
@@ -104,7 +174,6 @@ export default function Navbar() {
                       transition={{ duration: 0.15 }}
                       className="absolute top-full right-0 mt-2 w-56 bg-white border border-[#d4d4d4] rounded-2xl shadow-xl p-2 z-50"
                     >
-                      {/* User info section */}
                       <div className="px-3 py-2.5 mb-1 border-b border-[#f0f0f0]">
                         <div className="flex items-center gap-2.5">
                           <div className="w-9 h-9 rounded-full bg-[#4ade80] flex items-center justify-center text-[#062c11] font-black text-sm">
@@ -120,8 +189,6 @@ export default function Navbar() {
                           </div>
                         </div>
                       </div>
-
-                      {/* Menu items */}
                       <NavLink
                         to="/dashboard"
                         onClick={() => setDropdownOpen(false)}
@@ -130,7 +197,6 @@ export default function Navbar() {
                         <LayoutDashboard size={14} className="text-[#33cc33]" />
                         Dashboard
                       </NavLink>
-
                       <NavLink
                         to="/history"
                         onClick={() => setDropdownOpen(false)}
@@ -139,7 +205,6 @@ export default function Navbar() {
                         <History size={14} className="text-[#6e6e6e]" />
                         My History
                       </NavLink>
-
                       <div className="border-t border-[#f0f0f0] mt-1 pt-1">
                         <button
                           onClick={() => {
@@ -162,15 +227,19 @@ export default function Navbar() {
               </NavLink>
             )}
           </div>
+
+          {/* Mobile burger */}
           <button
             className="md:hidden btn-ghost p-2"
-            onClick={() => setOpen((o) => !o)}
+            onClick={() => setMobileOpen((o) => !o)}
             aria-label="Toggle menu"
           >
-            {open ? <X size={18} /> : <Menu size={18} />}
+            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </nav>
-        {open && (
+
+        {/* Mobile Menu */}
+        {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -182,7 +251,7 @@ export default function Navbar() {
                 key={to}
                 to={to}
                 end={to === "/"}
-                onClick={() => setOpen(false)}
+                onClick={() => setMobileOpen(false)}
                 className={({ isActive }) =>
                   `nav-link ${isActive ? "active" : ""}`
                 }
