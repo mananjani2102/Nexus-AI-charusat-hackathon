@@ -56,18 +56,20 @@ router.post('/bulk-analyze', upload.array('resumes', 50), async (req, res) => {
 
 ${resumeBlock}
 
-Return ONLY a valid JSON array (no markdown), one object per resume:
-[
-  {
-    "filename": "original filename",
-    "overall_score": number 0-100,
-    "ats_score": number 0-100,
-    "clarity_score": number 0-100,
-    "strengths": ["strength 1", "strength 2", "strength 3"],
-    "top_keyword_missing": "single most important missing keyword"
-  }
-]
-Apply strict, objective, and deterministic scoring algorithms. If two resumes have identical content, they MUST receive the exact same scores. Do not add arbitrary variance.`;
+Return ONLY a valid JSON object containing a "results" array. No markdown, no introductory text.
+{
+  "results": [
+    {
+      "filename": "original filename",
+      "overall_score": number 0-100,
+      "ats_score": number 0-100,
+      "clarity_score": number 0-100,
+      "strengths": ["strength 1", "strength 2", "strength 3"],
+      "top_keyword_missing": "single most important missing keyword"
+    }
+  ]
+}
+Apply strict, objective, and deterministic scoring algorithms. If a document is clearly NOT a resume (e.g. rules, guidelines, policies, random letters), it MUST receive a score of 0 for all metrics. If two resumes have identical content, they MUST receive the exact same scores. Do not add arbitrary variance.`;
 
     let results;
 
@@ -83,27 +85,20 @@ Apply strict, objective, and deterministic scoring algorithms. If two resumes ha
         messages: [{ role: "user", content: prompt }],
         temperature: 0.1,
         top_p: 0.8,
+        response_format: { type: "json_object" },
       });
 
       const raw = response.choices[0].message.content;
 
       try {
-        const jsonMatch = raw.match(/\[[\s\S]*\]/);
-        results = JSON.parse(jsonMatch ? jsonMatch[0] : raw);
+        const parsed = JSON.parse(raw);
+        results = parsed.results || [];
       } catch {
         throw new Error('Failed to parse AI response as JSON');
       }
     } catch (aiErr) {
-      console.error('AI analysis failed, using fallback scores:', aiErr.message);
-      // Fallback: generate randomized scores
-      results = resumeTexts.map(r => ({
-        filename: r.filename,
-        overall_score: Math.floor(Math.random() * 31) + 55,  // 55–85
-        ats_score: Math.floor(Math.random() * 31) + 55,
-        clarity_score: Math.floor(Math.random() * 31) + 55,
-        strengths: ['Relevant experience listed', 'Education section present', 'Contact info included'],
-        top_keyword_missing: 'collaboration',
-      }));
+      console.error('AI analysis failed:', aiErr.message);
+      throw new Error('AI Engine Error: ' + aiErr.message);
     }
 
     // Sort by overall_score descending and assign rank
