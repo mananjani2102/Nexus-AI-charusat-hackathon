@@ -198,10 +198,14 @@ export default function UploadPage() {
                   className="text-center"
                 >
                   <div
-                    className={`w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center border transition-all ${dragging
-                        ? "border-cyan-400 bg-cyan-500/15"
-                        : "border-white/10 bg-white/5"
+                    className={`cursor-pointer min-h-[220px] rounded-[var(--radius)] flex flex-col items-center justify-center p-8 transition-all border-2 border-dashed backdrop-blur-xl ${dragging
+                      ? "border-primary bg-primary/5 scale-[0.995]"
+                      : "border-border hover:border-primary/50 bg-card/10"
                       }`}
+                    onDrop={onDrop}
+                    onDragOver={onDragOver}
+                    onDragLeave={onDragLeave}
+                    onClick={() => inputRef.current.click()}
                   >
                     <Upload
                       size={26}
