@@ -4,18 +4,18 @@
 
 <br>
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=24&duration=2800&pause=900&color=7C3AED&center=true&vCenter=true&random=false&width=960&lines=Upload+PDF+or+DOCX.+Get+Scored+by+AI.+Download+in+Seconds.;ATS+Score+%7C+Keyword+Gap+%7C+Clarity+Score+%7C+STAR+Bullets;Groq+LLaMA+3.3+70B+%E2%86%92+Gemini+Fallback+Chain;Your+Resume.+Supercharged.+Interview-Ready.)](https://github.com/mananjani2102)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=24&duration=2800&pause=900&color=7C3AED&center=true&vCenter=true&random=false&width=960&lines=Upload+PDF+or+DOCX.+Get+Scored+by+AI.+Download+in+Seconds.;ATS+Score+%7C+Keyword+Gap+%7C+Clarity+Score+%7C+STAR+Bullets;Live+Speech+Intelligence+%7C+Mock+Interview+%7C+Recruiter+Mode;Groq+LLaMA+3.1+8B+Instant+%E2%80%94+Ultra+Fast+Inference;Your+Resume.+Supercharged.+Interview-Ready.)](https://github.com/mananjani2102)
 
 <br>
 
 <p align="center">
   <a href="https://nexuss-ai.netlify.app/">
-    <img src="https://img.shields.io/badge/%F0%9F%9A%80%20LIVE%20DEMO-VIEW%20PROJECT-7C3AED?style=for-the-badge&labelColor=0d0d0d" />
+    <img src="https://img.shields.io/badge/LIVE%20DEMO-VIEW%20PROJECT-7C3AED?style=for-the-badge&labelColor=0d0d0d" />
   </a>
   &nbsp;
   <img src="https://img.shields.io/badge/STACK-React%20%2B%20Node.js-3B82F6?style=for-the-badge&labelColor=0d0d0d" />
   &nbsp;
-  <img src="https://img.shields.io/badge/AI-LLaMA%203.3%2070B-F59E0B?style=for-the-badge&labelColor=0d0d0d" />
+  <img src="https://img.shields.io/badge/AI-Groq%20LLaMA%203.1%208B-F59E0B?style=for-the-badge&labelColor=0d0d0d" />
   &nbsp;
   <img src="https://img.shields.io/badge/LICENSE-MIT-10B981?style=for-the-badge&labelColor=0d0d0d" />
 </p>
@@ -35,12 +35,16 @@
 </div>
 
 ```
-  ✗  They give you a number — not a direction
-  ✗  They flag keywords — but won't fix your writing
-  ✗  They destroy your formatting when they "improve" your resume
-  ✗  One AI model fails — the whole thing breaks
+  x  They give you a number — not a direction
+  x  They flag keywords — but won't fix your writing
+  x  They destroy your formatting when they "improve" your resume
+  x  Interview prep is generic — not based on your actual resume
+  x  No way to practice speaking your answers out loud
+  x  Recruiters have no tool to rank multiple candidates at once
 
-  ✔  Nexus AI scores, rewrites, preserves, and downloads — end to end
+  +  Nexus AI scores, rewrites, preserves, and downloads — end to end
+  +  Live AI Mock Interview with real-time speech intelligence
+  +  Recruiter Mode — rank up to 20 resumes by AI score instantly
 ```
 
 <div align="center">
@@ -57,7 +61,8 @@
 <img src="https://img.shields.io/badge/No%20Rewrite-555555?style=flat-square" />
 <img src="https://img.shields.io/badge/Breaks%20Formatting-555555?style=flat-square" />
 <img src="https://img.shields.io/badge/No%20Interview%20Prep-555555?style=flat-square" />
-<img src="https://img.shields.io/badge/Single%20AI%20Model-555555?style=flat-square" />
+<img src="https://img.shields.io/badge/No%20Speech%20Analysis-555555?style=flat-square" />
+<img src="https://img.shields.io/badge/No%20Bulk%20Ranking-555555?style=flat-square" />
 <img src="https://img.shields.io/badge/No%20DOCX%20Download-555555?style=flat-square" />
 
 </td>
@@ -68,9 +73,10 @@
 <img src="https://img.shields.io/badge/ATS%20%2B%20Clarity%20Score-7C3AED?style=flat-square" />
 <img src="https://img.shields.io/badge/Full%20AI%20Rewrite-3B82F6?style=flat-square" />
 <img src="https://img.shields.io/badge/Style%20%26%20Format%20Preserved-10B981?style=flat-square" />
-<img src="https://img.shields.io/badge/Personalized%20Interview%20Prep-F59E0B?style=flat-square" />
-<img src="https://img.shields.io/badge/Groq%20%E2%86%92%20Gemini%20Fallback-EF4444?style=flat-square" />
-<img src="https://img.shields.io/badge/Download%20as%20DOCX-7C3AED?style=flat-square" />
+<img src="https://img.shields.io/badge/Resume--Tailored%20Interview-F59E0B?style=flat-square" />
+<img src="https://img.shields.io/badge/Live%20Speech%20Intelligence-EF4444?style=flat-square" />
+<img src="https://img.shields.io/badge/Recruiter%20Bulk%20Ranking-7C3AED?style=flat-square" />
+<img src="https://img.shields.io/badge/Download%20as%20DOCX-3B82F6?style=flat-square" />
 
 </td>
 </tr>
@@ -98,7 +104,7 @@
 <img src="https://user-images.githubusercontent.com/74038190/212257454-16e3712e-945a-4ca2-b238-408ad0bf87e6.gif" width="90"/>
 
 ### Resume Analysis
-Score your resume across **ATS compatibility**, **clarity**, and **overall quality** in under 10 seconds. Powered by Groq LLaMA 3.3 70B.
+Score your resume across **ATS compatibility**, **clarity**, and **overall quality** in under 10 seconds. Paste the job description for deeper keyword matching.
 
 <img src="https://img.shields.io/badge/ATS%20Score-7C3AED?style=flat-square" />
 <img src="https://img.shields.io/badge/Clarity%20Score-3B82F6?style=flat-square" />
@@ -109,7 +115,7 @@ Score your resume across **ATS compatibility**, **clarity**, and **overall quali
 <img src="https://user-images.githubusercontent.com/74038190/212257472-08e52665-c503-4bd9-aa20-f5a4dae769b5.gif" width="90"/>
 
 ### AI Full Rewrite
-Your resume fully rewritten with strong action verbs and quantified results. The original layout, fonts, and colors stay **100% untouched**.
+Your resume fully rewritten with strong action verbs and quantified results. The original layout, fonts, and colors stay **100% untouched**. Download as real `.docx`.
 
 <img src="https://img.shields.io/badge/DOCX%20Preserved-10B981?style=flat-square" />
 <img src="https://img.shields.io/badge/PDF%20Supported-F59E0B?style=flat-square" />
@@ -155,7 +161,7 @@ Identifies the **exact keywords missing** from your resume relative to the targe
 <img src="https://user-images.githubusercontent.com/74038190/212257468-1e9a91f1-b626-4baa-b15d-5c385dfa7ed2.gif" width="90"/>
 
 ### DOCX Download
-The AI-improved resume is available for **direct `.docx` download** — not a screenshot, not a PDF print, a real editable Word file with all your original formatting.
+The AI-improved resume is available for **direct `.docx` download** — not a screenshot, not a PDF print, a real editable Word file with all your original formatting intact.
 
 <img src="https://img.shields.io/badge/Base64%20Export-3B82F6?style=flat-square" />
 <img src="https://img.shields.io/badge/Editable%20File-10B981?style=flat-square" />
@@ -165,11 +171,11 @@ The AI-improved resume is available for **direct `.docx` download** — not a sc
 
 <img src="https://user-images.githubusercontent.com/74038190/212257465-7ce8d493-cac5-494e-982a-5a9deb852c4b.gif" width="90"/>
 
-### Smart Fallback Chain
-If Groq hits its rate limit, the backend **automatically switches** to Gemini 2.0 Flash → 1.5 Flash → 1.5 Pro. You never see a failure.
+### STAR Bullets in Dashboard
+The dashboard shows **original vs AI-improved** bullet pairs side by side. See exactly what changed and copy the improved version instantly.
 
-<img src="https://img.shields.io/badge/Always%20Online-EF4444?style=flat-square" />
-<img src="https://img.shields.io/badge/3%20Model%20Chain-7C3AED?style=flat-square" />
+<img src="https://img.shields.io/badge/Before%20%26%20After-EF4444?style=flat-square" />
+<img src="https://img.shields.io/badge/Copy%20Ready-7C3AED?style=flat-square" />
 
 </td>
 <td align="center" width="25%">
@@ -177,15 +183,83 @@ If Groq hits its rate limit, the backend **automatically switches** to Gemini 2.
 <img src="https://user-images.githubusercontent.com/74038190/212257460-738ff738-247f-4445-a718-cdd0ca76e2db.gif" width="90"/>
 
 ### Secure Auth
-JWT-based login with bcrypt password hashing. Optional Firebase Auth integration for Google sign-in. Session persists with a **7-day token**.
+JWT-based login with bcrypt password hashing. Session persists with a **7-day token**. Register, login, and your analysis history is saved.
 
 <img src="https://img.shields.io/badge/JWT%20Auth-F59E0B?style=flat-square" />
-<img src="https://img.shields.io/badge/Firebase%20Optional-3B82F6?style=flat-square" />
+<img src="https://img.shields.io/badge/bcrypt%20Hashed-3B82F6?style=flat-square" />
+
+</td>
+</tr>
+<tr>
+<td align="center" width="25%">
+
+<img src="https://user-images.githubusercontent.com/74038190/212748830-4c709398-a386-4761-84d7-9e10b98fbe6e.gif" width="90"/>
+
+### AI Mock Interview
+Practice with a live AI interviewer. **5 questions generated from your actual resume.** Answer by voice or type. Get scored on content + delivery after all 5 answers.
+
+<img src="https://img.shields.io/badge/Voice%20%2B%20Text-EF4444?style=flat-square" />
+<img src="https://img.shields.io/badge/AI%20Scored-7C3AED?style=flat-square" />
+
+</td>
+<td align="center" width="25%">
+
+<img src="https://user-images.githubusercontent.com/74038190/212257468-1e9a91f1-b626-4baa-b15d-5c385dfa7ed2.gif" width="90"/>
+
+### Live Speech Intelligence
+While you speak, the browser tracks your **WPM pace**, **filler words** (um, uh, like...), and **confidence score** in real time — with zero server calls. No AI chatbot does this.
+
+<img src="https://img.shields.io/badge/Zero%20Latency-10B981?style=flat-square" />
+<img src="https://img.shields.io/badge/Browser%20Native-3B82F6?style=flat-square" />
+
+</td>
+<td align="center" width="25%">
+
+<img src="https://user-images.githubusercontent.com/74038190/235294007-de441046-823e-4eff-89bf-d4df52858b65.gif" width="90"/>
+
+### Recruiter Mode
+Upload up to **20 resumes at once**. AI analyzes every candidate and ranks them from highest to lowest score. Built for recruiters and hiring managers.
+
+<img src="https://img.shields.io/badge/Bulk%20Upload-F59E0B?style=flat-square" />
+<img src="https://img.shields.io/badge/Auto%20Ranked-7C3AED?style=flat-square" />
+
+</td>
+<td align="center" width="25%">
+
+<img src="https://user-images.githubusercontent.com/74038190/212257460-738ff738-247f-4445-a718-cdd0ca76e2db.gif" width="90"/>
+
+### Secure Auth
+JWT-based login with bcrypt password hashing. Session persists with a **7-day token**. Register, login, and your analysis history is saved.
+
+<img src="https://img.shields.io/badge/JWT%20Auth-F59E0B?style=flat-square" />
+<img src="https://img.shields.io/badge/bcrypt%20Hashed-3B82F6?style=flat-square" />
 
 </td>
 </tr>
 </table>
 </div>
+
+<br>
+
+<div align="center">
+
+---
+
+### Live Speech Intelligence — The Feature No AI Chatbot Has
+
+</div>
+
+```
+While you speak your interview answer, Nexus AI tracks in real time —
+entirely in your browser, with zero server calls:
+
+  WPM (Words Per Minute)  ->  Flags pace as too fast, optimal, or too slow
+  Filler Words            ->  Detects "um", "uh", "like", "basically", "you know"
+  Confidence Score        ->  Adjusts live — penalizes fillers, rewards steady pace
+
+All three metrics update on screen as you speak.
+Zero latency. Zero API calls. 100% browser-native — powered by the Web Speech API.
+```
 
 <br>
 
@@ -238,12 +312,12 @@ JWT-based login with bcrypt password hashing. Optional Firebase Auth integration
 <tr>
 <td align="center"><img src="https://img.shields.io/badge/Auth-EF4444?style=flat-square" /></td>
 <td align="center"><strong>Firebase Auth</strong></td>
-<td>Optional social and email auth — layered on top of JWT</td>
+<td>Optional social and email auth — config present, layered on top of JWT</td>
 </tr>
 <tr>
 <td align="center"><img src="https://img.shields.io/badge/Styling-7C3AED?style=flat-square" /></td>
-<td align="center"><strong>CSS Modules</strong></td>
-<td>Scoped component styles — no class name conflicts at scale</td>
+<td align="center"><strong>Tailwind CSS</strong></td>
+<td>Utility-first styling with custom CSS variables for dark mode theming</td>
 </tr>
 </table>
 
@@ -264,7 +338,7 @@ JWT-based login with bcrypt password hashing. Optional Firebase Auth integration
 <tr>
 <td align="center"><img src="https://img.shields.io/badge/Server-7C3AED?style=flat-square" /></td>
 <td align="center"><strong>Node.js + Express</strong></td>
-<td>REST API server with global error handler and 50MB body limit for file uploads</td>
+<td>REST API server running on port 4002 with global error handling</td>
 </tr>
 <tr>
 <td align="center"><img src="https://img.shields.io/badge/Database-3B82F6?style=flat-square" /></td>
@@ -272,42 +346,37 @@ JWT-based login with bcrypt password hashing. Optional Firebase Auth integration
 <td>Stores users and analysis history with typed schemas and validation</td>
 </tr>
 <tr>
-<td align="center"><img src="https://img.shields.io/badge/Primary%20AI-10B981?style=flat-square" /></td>
-<td align="center"><strong>Groq SDK — LLaMA 3.3 70B</strong></td>
-<td>Ultra-fast inference for scoring, rewriting, bullets, and interview questions</td>
+<td align="center"><img src="https://img.shields.io/badge/AI-10B981?style=flat-square" /></td>
+<td align="center"><strong>Groq — LLaMA 3.1 8B Instant</strong></td>
+<td>Ultra-fast inference for scoring, rewriting, bullet improvement, and interview questions</td>
 </tr>
 <tr>
-<td align="center"><img src="https://img.shields.io/badge/Fallback%20AI-F59E0B?style=flat-square" /></td>
-<td align="center"><strong>Google Gemini (2.0 → 1.5)</strong></td>
-<td>3-model fallback chain triggered automatically when Groq is unavailable</td>
-</tr>
-<tr>
-<td align="center"><img src="https://img.shields.io/badge/Upload-EF4444?style=flat-square" /></td>
+<td align="center"><img src="https://img.shields.io/badge/Upload-F59E0B?style=flat-square" /></td>
 <td align="center"><strong>Multer</strong></td>
-<td>In-memory file handling for PDF and DOCX resume uploads</td>
+<td>In-memory file handling for PDF and DOCX resume uploads (max 5 MB)</td>
 </tr>
 <tr>
-<td align="center"><img src="https://img.shields.io/badge/PDF-7C3AED?style=flat-square" /></td>
+<td align="center"><img src="https://img.shields.io/badge/PDF-EF4444?style=flat-square" /></td>
 <td align="center"><strong>pdf-parse</strong></td>
 <td>Extracts raw text from uploaded PDF resumes for AI processing</td>
 </tr>
 <tr>
-<td align="center"><img src="https://img.shields.io/badge/DOCX-3B82F6?style=flat-square" /></td>
+<td align="center"><img src="https://img.shields.io/badge/DOCX-7C3AED?style=flat-square" /></td>
 <td align="center"><strong>Mammoth</strong></td>
 <td>Converts DOCX to plain text and fallback HTML for AI consumption</td>
 </tr>
 <tr>
-<td align="center"><img src="https://img.shields.io/badge/DOCX%20Style-10B981?style=flat-square" /></td>
+<td align="center"><img src="https://img.shields.io/badge/DOCX%20Style-3B82F6?style=flat-square" /></td>
 <td align="center"><strong>JSZip + xml2js</strong></td>
-<td>Custom parser that preserves fonts, colors, and layout during rewrite</td>
+<td>Custom parser that preserves fonts, colors, and layout during AI rewrite</td>
 </tr>
 <tr>
-<td align="center"><img src="https://img.shields.io/badge/Security-F59E0B?style=flat-square" /></td>
+<td align="center"><img src="https://img.shields.io/badge/Security-10B981?style=flat-square" /></td>
 <td align="center"><strong>bcryptjs + jsonwebtoken</strong></td>
 <td>Password hashing at cost 10 and 7-day signed JWT tokens</td>
 </tr>
 <tr>
-<td align="center"><img src="https://img.shields.io/badge/Config-EF4444?style=flat-square" /></td>
+<td align="center"><img src="https://img.shields.io/badge/Config-F59E0B?style=flat-square" /></td>
 <td align="center"><strong>dotenv</strong></td>
 <td>Loads environment variables from `.env` at server startup</td>
 </tr>
@@ -330,15 +399,12 @@ JWT-based login with bcrypt password hashing. Optional Firebase Auth integration
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#7C3AED','primaryTextColor':'#ffffff','primaryBorderColor':'#7C3AED','lineColor':'#3B82F6','secondaryColor':'#10B981','tertiaryColor':'#F59E0B','background':'#0d0d0d'}}}%%
 flowchart LR
-    A([Upload\nPDF or DOCX]) -->|Extract Text| B([Groq\nLLaMA 3.3 70B])
+    A([Upload\nPDF or DOCX]) -->|Extract Text| B([Groq\nLLaMA 3.1 8B])
     B --> C([Score\nATS + Clarity])
     C --> D([Gap\nAnalysis])
     D --> E{Rewrite\nRequested?}
-    E -->|Yes| F{Groq\nAvailable?}
+    E -->|Yes| G([AI Rewrite\nvia Groq])
     E -->|No| Z([Return\nResults])
-    F -->|Yes| G([AI Rewrite\nvia Groq])
-    F -->|Rate Limited| H([Gemini\nFallback Chain])
-    H -->|2.0 Flash -> 1.5 Flash -> 1.5 Pro| G
     G -->|Inject Back| I([DOCX\nDownload Ready])
 
     style A fill:#7C3AED,stroke:#7C3AED,color:#fff
@@ -346,18 +412,16 @@ flowchart LR
     style C fill:#10B981,stroke:#10B981,color:#fff
     style D fill:#F59E0B,stroke:#F59E0B,color:#fff
     style E fill:#EF4444,stroke:#EF4444,color:#fff
-    style F fill:#EF4444,stroke:#EF4444,color:#fff
     style G fill:#10B981,stroke:#10B981,color:#fff
-    style H fill:#F59E0B,stroke:#F59E0B,color:#fff
     style I fill:#7C3AED,stroke:#7C3AED,color:#fff
     style Z fill:#3B82F6,stroke:#3B82F6,color:#fff
 ```
 
 <br>
 
-<img src="https://img.shields.io/badge/%E2%86%92%20Step%201-Upload%20Resume-7C3AED?style=for-the-badge&labelColor=0d0d0d" />
-<img src="https://img.shields.io/badge/%E2%86%92%20Step%202-AI%20Scores%20%26%20Identifies%20Gaps-3B82F6?style=for-the-badge&labelColor=0d0d0d" />
-<img src="https://img.shields.io/badge/%E2%86%92%20Step%203-Rewrite%20%26%20Download-10B981?style=for-the-badge&labelColor=0d0d0d" />
+<img src="https://img.shields.io/badge/Step%201-Upload%20Resume-7C3AED?style=for-the-badge&labelColor=0d0d0d" />
+<img src="https://img.shields.io/badge/Step%202-AI%20Scores%20%26%20Identifies%20Gaps-3B82F6?style=for-the-badge&labelColor=0d0d0d" />
+<img src="https://img.shields.io/badge/Step%203-Rewrite%20%26%20Download-10B981?style=for-the-badge&labelColor=0d0d0d" />
 
 </div>
 
@@ -378,70 +442,65 @@ flowchart LR
 ```
 nexus-ai/
 |
-+-- backend/                           <- Node.js + Express REST API
-|   |
-|   +-- models/
-|   |   +-- User.js                    <- name · email · bcrypt password
-|   |   +-- History.js                 <- filename · scores · keywords · date
-|   |
-|   +-- routes/
-|   |   +-- auth.js                    <- POST /signup  |  POST /login
-|   |   +-- analyze.js                 <- POST /analyze — PDF/DOCX -> AI scoring
-|   |   +-- bullet.js                  <- POST /improve-bullet — STAR rewrite
-|   |   +-- interview.js               <- POST /interview-questions — tailored Q&A
-|   |   +-- rewrite.js                 <- POST /rewrite-resume — full Groq/Gemini rewrite
-|   |   +-- history.js                 <- GET  /history — last 20 analyses
-|   |
-|   +-- utils/
-|   |   +-- docxStore.js               <- In-memory buffer keyed by UUID
-|   |   +-- docxStyleExtractor.js      <- JSZip+xml2js -> styled HTML (preserves layout)
-|   |   +-- docxTextReplacer.js        <- Injects AI text into raw DOCX XML
-|   |   +-- htmlTextMapper.js          <- Numbered text-map extraction & re-injection
-|   |
-|   +-- .env.example                   <- Template for required environment variables
-|   +-- .gitignore
-|   +-- package.json
-|   +-- server.js                      <- Express entry · MongoDB connect · global handler
++-- routes/
+|   +-- auth.js             <- POST /signup  |  POST /login
+|   +-- analyze.js          <- POST /analyze — PDF/DOCX -> Groq scoring
+|   +-- bullet.js           <- POST /improve-bullet — STAR rewrite
+|   +-- interview.js        <- POST /interview-questions — 5 tailored Q&A
+|   +-- rewrite.js          <- POST /rewrite-resume — full Groq rewrite + DOCX
+|   +-- history.js          <- GET  /history — last 20 analyses
+|   +-- mockInterview.js    <- POST /mock-interview/questions + /evaluate
+|   +-- recruiter.js        <- POST /recruiter/bulk-analyze — rank up to 20 resumes
 |
-+-- src/                               <- React 18 + Vite Frontend
-    |
-    +-- assets/                        <- Brand images · hero backgrounds · logo
++-- models/
+|   +-- User.js          <- name · email · bcrypt password
+|   +-- History.js       <- filename · scores · keywords · date
+|
++-- utils/
+|   +-- docxStore.js           <- In-memory DOCX buffer keyed by UUID (30 min TTL)
+|   +-- docxStyleExtractor.js  <- JSZip+xml2js -> styled HTML (preserves layout)
+|   +-- docxTextReplacer.js    <- Injects AI text back into raw DOCX XML
+|   +-- htmlTextMapper.js      <- Numbered text-map extraction & re-injection
+|
++-- src/
+    +-- assets/            <- Brand images · hero backgrounds · logo
     |
     +-- components/
-    |   +-- BrandIntro.jsx             <- Animated brand splash on first load
-    |   +-- DemoVideoPlayer.jsx        <- Embedded demo player on landing page
-    |   +-- ErrorBanner.jsx            <- Global error display banner
-    |   +-- LoginModal.jsx             <- Modal-based login flow
-    |   +-- Modal.jsx                  <- Reusable base modal component
-    |   +-- Navbar.jsx                 <- Responsive top navigation bar
-    |   +-- PageWrapper.jsx            <- Framer Motion route-level wrapper
-    |   +-- ScoreRing.jsx              <- Animated circular score indicator
-    |
-    +-- config/
-    |   +-- firebase.js               <- Firebase app init + getAuth export
+    |   +-- BrandIntro.jsx       <- Animated brand splash on first load
+    |   +-- DemoVideoPlayer.jsx  <- Embedded demo player on landing page
+    |   +-- ErrorBanner.jsx      <- Dismissible error display banner
+    |   +-- LoginModal.jsx       <- Modal-based login flow
+    |   +-- Modal.jsx            <- Reusable base modal component
+    |   +-- Navbar.jsx           <- Responsive top navigation bar
+    |   +-- PageWrapper.jsx      <- Framer Motion route-level wrapper
+    |   +-- ScoreRing.jsx        <- Animated circular score indicator
     |
     +-- context/
-    |   +-- AuthContext.jsx           <- JWT decode · login · logout · user state
-    |   +-- ResumeContext.jsx          <- Global resume + analysis state
+    |   +-- AuthContext.jsx      <- JWT login · logout · user state
+    |   +-- ResumeContext.jsx    <- Global resume + analysis state
     |
     +-- pages/
-    |   +-- LandingPage.jsx            <- Hero · features · CTA · demo video
-    |   +-- LoginPage.jsx              <- Login form with validation
-    |   +-- RegisterPage.jsx           <- Registration form
-    |   +-- UploadPage.jsx             <- Drag-and-drop resume upload + role input
-    |   +-- DashboardPage.jsx          <- Score rings · strengths · weakness cards
-    |   +-- SuggestionsPage.jsx        <- AI suggestions · full rewrite · download
-    |   +-- BulletImproverPage.jsx     <- STAR bullet tool standalone
-    |   +-- HistoryPage.jsx            <- Past analysis cards with scores
+    |   +-- LandingPage.jsx        <- Hero · features · CTA
+    |   +-- LoginPage.jsx          <- Login form with validation
+    |   +-- RegisterPage.jsx       <- Registration form
+    |   +-- UploadPage.jsx         <- Drag-and-drop upload + role + JD input
+    |   +-- DashboardPage.jsx      <- Score rings · strengths · rewrite · download
+    |   +-- SuggestionsPage.jsx    <- AI suggestions · keyword gaps
+    |   +-- BulletImproverPage.jsx <- STAR bullet tool standalone
+    |   +-- HistoryPage.jsx        <- Past analysis cards with scores
+    |   +-- MockInterviewPage.jsx  <- Live AI interview + real-time speech intelligence
+    |   +-- RecruiterPage.jsx      <- Bulk upload + AI-ranked candidate leaderboard
     |
     +-- services/
-    |   +-- api.js                     <- Axios instance · all 5 API call functions
+    |   +-- api.js         <- Axios instance · all API call functions
     |
-    +-- App.jsx                        <- BrowserRouter · AnimatePresence · routes
-    +-- main.jsx                       <- ReactDOM.createRoot entry point
-    +-- App.css                        <- Global layout styles
-    +-- index.css                      <- CSS variables · resets · typography
-    +-- resume-preview.css             <- Styles for inline DOCX HTML preview
+    +-- config/
+    |   +-- firebase.js    <- Firebase app init + getAuth export
+    |
+    +-- App.jsx            <- BrowserRouter · AnimatePresence · routes
+    +-- main.jsx           <- ReactDOM.createRoot entry point
+    +-- index.css          <- CSS variables · dark mode theme · custom classes
+    +-- resume-preview.css <- Styles for inline DOCX HTML preview
 ```
 
 <br>
@@ -461,33 +520,33 @@ nexus-ai/
 <td>
 
 ```
-╔══════════════════════════════════════════════════════════════════╗
-║                                                                  ║
-║   ┌──────────────────────────────────────────────────────────┐   ║
-║   │  TERMINAL                                          ● ● ● │   ║
-║   ├──────────────────────────────────────────────────────────┤   ║
-║   │                                                          │   ║
-║   │  $ git clone github.com/mananjani2102/nexus-ai           │   ║
-║   │  Cloning into 'nexus-ai'... done.                        │   ║
-║   │                                                          │   ║
-║   │  $ cd nexus-ai/backend && npm install                    │   ║
-║   │  added 187 packages in 8s                                │   ║
-║   │                                                          │   ║
-║   │  $ cp .env.example .env                                  │   ║
-║   │  # open .env and paste your API keys                     │   ║
-║   │                                                          │   ║
-║   │  $ npm run dev                                           │   ║
-║   │  + MongoDB connected                                     │   ║
-║   │  + Server running on http://localhost:4000               │   ║
-║   │                                                          │   ║
-║   │  $ cd .. && npm install && npm run dev                   │   ║
-║   │  + Frontend running on http://localhost:5173             │   ║
-║   │                                                          │   ║
-║   │  Nexus AI is live. Go build your career.                 │   ║
-║   │                                                          │   ║
-║   └──────────────────────────────────────────────────────────┘   ║
-║                                                                  ║
-╚══════════════════════════════════════════════════════════════════╝
++==================================================================+
+|                                                                  |
+|   +----------------------------------------------------------+   |
+|   |  TERMINAL                                          . . . |   |
+|   +----------------------------------------------------------+   |
+|   |                                                          |   |
+|   |  $ git clone github.com/mananjani2102/nexus-ai           |   |
+|   |  Cloning into 'nexus-ai'... done.                        |   |
+|   |                                                          |   |
+|   |  $ cd nexus-ai && npm install                            |   |
+|   |  added 187 packages in 8s                                |   |
+|   |                                                          |   |
+|   |  $ cp .env.example .env                                  |   |
+|   |  # open .env and paste your keys                         |   |
+|   |                                                          |   |
+|   |  $ node server.js                                        |   |
+|   |  + MongoDB connected                                     |   |
+|   |  + Server running on http://localhost:4002               |   |
+|   |                                                          |   |
+|   |  $ cd src && npm run dev                                 |   |
+|   |  + Frontend running on http://localhost:5173             |   |
+|   |                                                          |   |
+|   |  Nexus AI is live. Go build your career.                 |   |
+|   |                                                          |   |
+|   +----------------------------------------------------------+   |
+|                                                                  |
++==================================================================+
 ```
 
 </td>
@@ -502,7 +561,6 @@ nexus-ai/
 <img src="https://img.shields.io/badge/npm-v9%2B-CB3837?style=flat-square&logo=npm&logoColor=white&labelColor=0d0d0d" />
 <img src="https://img.shields.io/badge/MongoDB-Atlas%20or%20Local-47A248?style=flat-square&logo=mongodb&logoColor=white&labelColor=0d0d0d" />
 <img src="https://img.shields.io/badge/Groq-API%20Key%20Required-F55036?style=flat-square&logoColor=white&labelColor=0d0d0d" />
-<img src="https://img.shields.io/badge/Gemini-API%20Key%20Optional-4285F4?style=flat-square&logo=google&logoColor=white&labelColor=0d0d0d" />
 
 ### 1 — Clone
 
@@ -511,38 +569,39 @@ git clone https://github.com/mananjani2102/nexus-ai.git
 cd nexus-ai
 ```
 
-### 2 — Backend
+### 2 — Install & Configure
 
 ```bash
-cd backend
 npm install
-cp .env.example .env        # fill in MONGODB_URI, JWT_SECRET, GROQ_API_KEY
-npm run dev                 # → http://localhost:4000
+cp .env.example .env   # fill in MONGODB_URI, JWT_SECRET, GROQ_API_KEY
 ```
 
-### 3 — Frontend
+### 3 — Run Backend
 
 ```bash
-cd ..
-npm install
+node server.js         # -> http://localhost:4002
 ```
 
-Create `.env` at project root:
+### 4 — Run Frontend
+
+```bash
+cd src
+npm install
+npm run dev            # -> http://localhost:5173
+```
+
+Create `.env` at frontend root:
 
 ```env
-VITE_API_URL=http://localhost:4000/api
+VITE_API_URL=http://localhost:4002/api
 
-# Optional — Firebase Social Auth
+# Optional — Firebase Auth
 VITE_FIREBASE_API_KEY=
 VITE_FIREBASE_AUTH_DOMAIN=
 VITE_FIREBASE_PROJECT_ID=
 VITE_FIREBASE_STORAGE_BUCKET=
 VITE_FIREBASE_MESSAGING_SENDER_ID=
 VITE_FIREBASE_APP_ID=
-```
-
-```bash
-npm run dev                 # → http://localhost:5173
 ```
 
 <br>
@@ -561,19 +620,18 @@ npm run dev                 # → http://localhost:5173
 
 <div align="center">
 
-### `backend/.env`
+### `.env` — Backend
 
 | Variable | Required | Description |
 |:---|:---:|:---|
 | `MONGODB_URI` | **Yes** | Full MongoDB Atlas connection string |
 | `JWT_SECRET` | **Yes** | Random string used to sign JWT tokens (min 32 chars) |
 | `GROQ_API_KEY` | **Yes** | Groq API key — primary AI inference engine |
-| `GEMINI_API_KEY` | Optional | Google AI Studio key — activates the fallback chain |
-| `PORT` | Optional | HTTP port for Express (default `4000`) |
+| `PORT` | Optional | HTTP port for Express (default `4002`) |
 
 <br>
 
-### `.env` — Frontend Root
+### `.env` — Frontend
 
 | Variable | Required | Description |
 |:---|:---:|:---|
@@ -603,15 +661,18 @@ npm run dev                 # → http://localhost:5173
 
 <br><br>
 
-| Method | Endpoint | Auth | Description |
-|:---:|:---|:---:|:---|
-| `POST` | `/auth/signup` | — | Register new user, returns JWT |
-| `POST` | `/auth/login` | — | Authenticate user, returns JWT |
-| `POST` | `/analyze` | — | Upload PDF/DOCX → AI scores and analysis |
-| `POST` | `/improve-bullet` | — | Single bullet → STAR-method rewrite |
-| `POST` | `/interview-questions` | — | Generate 5 role-tailored interview questions |
-| `POST` | `/rewrite-resume` | — | Full AI rewrite → returns HTML + DOCX base64 |
-| `GET` | `/history` | — | Returns last 20 analyses sorted by date |
+| Method | Endpoint | Description |
+|:---:|:---|:---|
+| `POST` | `/auth/signup` | Register new user, returns JWT |
+| `POST` | `/auth/login` | Authenticate user, returns JWT |
+| `POST` | `/analyze` | Upload PDF/DOCX — AI scores and full analysis |
+| `POST` | `/improve-bullet` | Single bullet — STAR-method rewrite |
+| `POST` | `/interview-questions` | Generate 5 role-tailored interview questions |
+| `POST` | `/rewrite-resume` | Full AI rewrite — returns HTML + DOCX base64 |
+| `GET` | `/history` | Returns last 20 analyses sorted by date |
+| `POST` | `/mock-interview/questions` | Generate 5 resume-based interview questions |
+| `POST` | `/mock-interview/evaluate` | Evaluate all 5 answers — content + delivery scores |
+| `POST` | `/recruiter/bulk-analyze` | Upload up to 20 resumes — ranked results by score |
 
 </div>
 
@@ -631,20 +692,24 @@ npm run dev                 # → http://localhost:5173
 
 | Field | Type | Required | Detail |
 |:---|:---|:---:|:---|
-| `resume` | `File` | **Yes** | `.pdf` or `.docx` only |
+| `resume` | `File` | **Yes** | `.pdf` or `.docx` only, max 5 MB |
 | `jobRole` | `String` | No | Default: `Software Engineer` |
 | `jobDescription` | `String` | No | Paste JD for deeper keyword matching |
 
 ```json
 // Response 200
 {
-  "overall_score": 74,  "ats_score": 68,  "clarity_score": 80,
+  "overall_score": 74,
+  "ats_score": 68,
+  "clarity_score": 80,
   "strengths": ["Clear work experience", "Education present", "Contact complete", "Skills section clean"],
   "weaknesses": ["Missing metrics", "Weak verbs", "No summary", "ATS keywords thin"],
   "ats_keywords_missing": ["agile", "CI/CD", "scalable", "REST API", "leadership"],
   "star_bullets": { "Worked on backend": "Engineered 3 Node.js microservices, reducing API latency by 40%" },
-  "resumeText": "...",  "resumeHtml": "<div>...</div>",
-  "resumeFormat": "docx",  "docxId": "a1b2c3d4"
+  "resumeText": "...",
+  "resumeHtml": "<div>...</div>",
+  "resumeFormat": "docx",
+  "docxId": "a1b2c3d4e5f6..."
 }
 ```
 
@@ -670,10 +735,15 @@ npm run dev                 # → http://localhost:5173
 
 ```json
 // Request
-{ "jobRole": "Backend Engineer", "strengths": ["System design"], "weaknesses": ["Cloud gaps"], "ats_keywords_missing": ["Docker", "CI/CD"] }
+{
+  "jobRole": "Backend Engineer",
+  "strengths": ["System design", "Node.js"],
+  "weaknesses": ["Cloud gaps"],
+  "ats_keywords_missing": ["Docker", "CI/CD"]
+}
 
 // Response 200
-{ "questions": [ "Walk me through a system you designed end-to-end.", "How have you used Docker in production?", "..." ] }
+{ "questions": ["Walk me through a system you designed end-to-end.", "..."] }
 ```
 
 ### POST `/rewrite-resume`
@@ -683,7 +753,9 @@ npm run dev                 # → http://localhost:5173
 {
   "rewritten": "<div>...AI-improved HTML with original styles...</div>",
   "docxBase64": "UEsDBBQABgAIAAAAIQ...",
-  "changes": [{ "original": "Worked on backend", "improved": "Engineered scalable backend with 99.9% uptime" }]
+  "changes": [
+    { "original": "Worked on backend", "improved": "Engineered scalable REST APIs serving 10K+ requests/day" }
+  ]
 }
 ```
 
@@ -691,7 +763,18 @@ npm run dev                 # → http://localhost:5173
 
 ```json
 // Response 200
-[{ "_id": "665f...", "filename": "manan_resume.pdf", "job_role": "SWE", "overall_score": 74, "ats_score": 68, "clarity_score": 80, "keywords_missing": ["CI/CD"], "date": "2026-04-03T09:44:00Z" }]
+[
+  {
+    "_id": "665f...",
+    "filename": "manan_resume.pdf",
+    "job_role": "Software Engineer",
+    "overall_score": 74,
+    "ats_score": 68,
+    "clarity_score": 80,
+    "keywords_missing": ["CI/CD", "agile"],
+    "date": "2026-04-03T09:44:00Z"
+  }
+]
 ```
 
 <br>
@@ -716,12 +799,11 @@ All endpoints return a consistent error envelope:
 |:---:|:---|
 | `400` | Missing file · unsupported format · empty body · validation failure |
 | `401` | Wrong email or password on `/login` |
-| `500` | Unhandled server exception — caught by global Express error handler |
-| `503` | Groq **and** all 3 Gemini fallback models are simultaneously rate-limited |
+| `500` | Unhandled server exception |
 
 </div>
 
-Every AI route has its own `try/catch` with a hardcoded safe fallback — if the LLM returns malformed JSON, the app parses what it can and fills the rest with sensible defaults. Users never see a blank screen.
+Every AI route has its own `try/catch` with a hardcoded safe fallback — if Groq returns malformed JSON, the app parses what it can and fills the rest with sensible defaults. Users never see a blank screen.
 
 <br>
 
@@ -745,23 +827,23 @@ Every AI route has its own `try/catch` with a hardcoded safe fallback — if the
 
 <br>
 
-**Backend → Render**
+**Backend — Render**
 
-1. Push `backend/` to a GitHub repository.
+1. Push backend to a GitHub repository.
 2. Create a **Web Service** on [render.com](https://render.com).
-3. Build Command: `npm install` — Start Command: `npm start`
-4. Add all backend environment variables under **Environment** in the dashboard.
+3. Build Command: `npm install` — Start Command: `node server.js`
+4. Add all backend environment variables under **Environment**.
 5. Deploy. Live URL: `https://nexus-ai-3o4n.onrender.com`
 
-**Frontend → Netlify**
+**Frontend — Netlify**
 
-1. Push the project root to GitHub.
+1. Push the project to GitHub.
 2. Import on [netlify.com](https://netlify.com) — Framework: **Vite**
 3. Add all frontend environment variables.
 4. Set `VITE_API_URL` = `https://nexus-ai-3o4n.onrender.com/api`
 5. Deploy. Live URL: `https://nexuss-ai.netlify.app/`
 
-> `docxStore.js` holds DOCX buffers in-memory. They clear on server restart. For production persistence, migrate to **Redis** or **AWS S3**.
+> `docxStore.js` holds DOCX buffers in-memory with a 30-minute auto-cleanup. They clear on server restart — for production persistence, migrate to **Redis** or **AWS S3**.
 
 <br>
 
@@ -789,7 +871,7 @@ Every AI route has its own `try/catch` with a hardcoded safe fallback — if the
 <tr>
 <td align="center"><img src="https://img.shields.io/badge/HIGH-EF4444?style=flat-square" /></td>
 <td><strong>User-linked History</strong></td>
-<td>Tie every analysis record to the authenticated user's account</td>
+<td>Tie every analysis record to the authenticated user's account in MongoDB</td>
 </tr>
 <tr>
 <td align="center"><img src="https://img.shields.io/badge/MED-F59E0B?style=flat-square" /></td>
@@ -813,11 +895,6 @@ Every AI route has its own `try/catch` with a hardcoded safe fallback — if the
 </tr>
 <tr>
 <td align="center"><img src="https://img.shields.io/badge/LOW-3B82F6?style=flat-square" /></td>
-<td><strong>WebSocket Score Streaming</strong></td>
-<td>Real-time ATS score updates streamed during resume upload</td>
-</tr>
-<tr>
-<td align="center"><img src="https://img.shields.io/badge/LOW-3B82F6?style=flat-square" /></td>
 <td><strong>Multi-language Support</strong></td>
 <td>Detect resume language and run analysis in the same language</td>
 </tr>
@@ -827,16 +904,10 @@ Every AI route has its own `try/catch` with a hardcoded safe fallback — if the
 
 <br>
 
-<div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=4&width=900&section=header" width="100%">
-</div>
-
-<br>
-
 ## Contributing
 
 1. Fork the repository and create your branch: `git checkout -b feature/your-feature`
-2. Make your changes with clean, descriptive commits: `git commit -m "feat: add LinkedIn URL input"`
+2. Make your changes with clean commits: `git commit -m "feat: add cover letter generator"`
 3. Push to your fork: `git push origin feature/your-feature`
 4. Open a Pull Request against `main` — describe what changed and why.
 
@@ -858,7 +929,7 @@ This project is licensed under the [MIT License](LICENSE). Use it, fork it, ship
 
 ## The Team
 
-*Built with ☕ and zero sleep at a hackathon.*
+*Built with dedication and zero sleep at a hackathon.*
 
 <br>
 
