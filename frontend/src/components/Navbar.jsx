@@ -1,4 +1,9 @@
 import { NavLink, useLocation } from "react-router-dom";
+/* 
+  Nexus AI Navbar 
+  Integrated with Watermelon UI Fluid-Tabs design system.
+  Features: Fluid Pill active state, blurred transitions, and theme-matched glassmorphism.
+*/
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Zap,
