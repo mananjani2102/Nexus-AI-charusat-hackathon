@@ -21,6 +21,8 @@ const rewriteRoutes  = require('./routes/rewrite');
 const historyRoutes  = require('./routes/history');
 const recruiterRoutes = require('./routes/recruiter');
 const mockInterviewRoutes = require('./routes/mockInterview');
+const voiceAssistantRoutes = require('./routes/voiceAssistant');
+const battleRoutes = require('./routes/battle');
 
 app.use('/api/auth',               authRoutes);
 app.use('/api',                    analyzeRoutes);
@@ -30,6 +32,8 @@ app.use('/api',                    rewriteRoutes);
 app.use('/api',                    historyRoutes);
 app.use('/api/recruiter',          recruiterRoutes);
 app.use('/api/mock-interview',     mockInterviewRoutes);
+app.use('/api/voice-assistant',    voiceAssistantRoutes);
+app.use('/api',                    battleRoutes);
 
 // Health check
 app.get('/', (req, res) => res.json({ status: 'Nexus AI Backend Running ✅' }));

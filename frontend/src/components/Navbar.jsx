@@ -14,6 +14,8 @@ import {
   Mic,
   ChevronDown,
   MoreHorizontal,
+  MessageSquare,
+  Swords,
 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import logoUrl from "../assets/nexus-logo-01.png";
@@ -24,17 +26,35 @@ const primaryNavItems = [
   { to: "/", label: "Home", icon: Zap },
   { to: "/upload", label: "Upload", icon: Upload },
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { to: "/suggestions", label: "AI Fixes", icon: Lightbulb },
-  { to: "/bullet", label: "Bullet Pro", icon: Sparkles },
 ];
 
-const moreNavItems = [
-  { to: "/history", label: "History", icon: History },
-  { to: "/recruiter", label: "Recruiter", icon: Users },
-  { to: "/interview", label: "Interview", icon: Mic },
+const moreGroups = [
+  {
+    label: "AI Tools",
+    items: [
+      { to: "/suggestions", label: "AI Fixes", icon: Lightbulb },
+      { to: "/bullet", label: "Bullet Pro", icon: Sparkles },
+      { to: "/voice-assistant", label: "Voice AI", icon: MessageSquare },
+      { to: "/battle", label: "Battle", icon: Swords },
+    ],
+  },
+  {
+    label: "Practice",
+    items: [
+      { to: "/interview", label: "Mock Interview", icon: Mic },
+    ],
+  },
+  {
+    label: "Account",
+    items: [
+      { to: "/history", label: "History", icon: History },
+      { to: "/recruiter", label: "Recruiter Hub", icon: Users },
+    ],
+  },
 ];
 
-const allNavItems = [...primaryNavItems, ...moreNavItems];
+const allMoreItems = moreGroups.flatMap((g) => g.items);
+const allNavItems = [...primaryNavItems, ...allMoreItems];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -62,7 +82,7 @@ export default function Navbar() {
     return () => document.removeEventListener("click", close);
   }, [dropdownOpen]);
 
-  const isMoreActive = moreNavItems.some((item) =>
+  const isMoreActive = allMoreItems.some((item) =>
     item.to === "/" ? location.pathname === "/" : location.pathname.startsWith(item.to),
   );
 
@@ -82,7 +102,7 @@ export default function Navbar() {
             </span>
           </NavLink>
 
-          {/* Desktop: classic pill links + animated active dot */}
+          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1 relative">
             {primaryNavItems.map(({ to, label, icon: Icon }) => {
               const isActive =
@@ -114,6 +134,7 @@ export default function Navbar() {
               );
             })}
 
+            {/* More mega-dropdown */}
             <div className="relative" ref={moreRef}>
               <button
                 type="button"
@@ -142,31 +163,39 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -8, scale: 0.96 }}
                     transition={{ duration: 0.18 }}
-                    className="absolute top-full right-0 mt-2 w-48 glass-card p-2 z-50 border border-white/10"
+                    className="absolute top-full right-0 mt-2 w-52 glass-card p-2 z-50 border border-border shadow-xl"
                   >
-                    {moreNavItems.map(({ to, label, icon: Icon }) => {
-                      const isActive = location.pathname.startsWith(to);
-                      return (
-                        <NavLink
-                          key={to}
-                          to={to}
-                          onClick={() => setMoreOpen(false)}
-                          className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                            isActive
-                              ? "bg-primary/15 text-primary"
-                              : "text-nexus-muted hover:text-nexus-text hover:bg-white/5"
-                          }`}
-                        >
-                          <Icon size={15} className={isActive ? "text-primary" : ""} />
-                          {label}
-                          {to === "/history" && history?.length > 0 && (
-                            <span className="ml-auto min-w-[20px] h-5 rounded-full bg-primary text-background flex items-center justify-center text-[10px] font-bold px-1">
-                              {history.length}
-                            </span>
-                          )}
-                        </NavLink>
-                      );
-                    })}
+                    {moreGroups.map((group, gi) => (
+                      <div key={group.label}>
+                        {gi > 0 && <div className="border-t border-border/60 my-1.5" />}
+                        <p className="px-3 pt-1.5 pb-1 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/60">
+                          {group.label}
+                        </p>
+                        {group.items.map(({ to, label, icon: Icon }) => {
+                          const isActive = location.pathname.startsWith(to);
+                          return (
+                            <NavLink
+                              key={to}
+                              to={to}
+                              onClick={() => setMoreOpen(false)}
+                              className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium transition-all ${
+                                isActive
+                                  ? "bg-primary/15 text-primary"
+                                  : "text-muted-foreground hover:text-foreground hover:bg-muted/40"
+                              }`}
+                            >
+                              <Icon size={15} className={isActive ? "text-primary" : ""} />
+                              {label}
+                              {to === "/history" && history?.length > 0 && (
+                                <span className="ml-auto min-w-[20px] h-5 rounded-full bg-primary text-background flex items-center justify-center text-[10px] font-bold px-1">
+                                  {history.length}
+                                </span>
+                              )}
+                            </NavLink>
+                          );
+                        })}
+                      </div>
+                    ))}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -266,6 +295,7 @@ export default function Navbar() {
           </button>
         </nav>
 
+        {/* Mobile menu */}
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
@@ -275,8 +305,12 @@ export default function Navbar() {
               transition={{ duration: 0.2 }}
               className="overflow-hidden"
             >
-              <div className="mt-2 glass-card px-4 py-3 flex flex-col gap-1 md:hidden border border-white/10">
-                {allNavItems.map(({ to, label, icon: Icon }) => (
+              <div className="mt-2 glass-card px-4 py-3 flex flex-col gap-0.5 md:hidden border border-border shadow-xl">
+                {/* Core */}
+                <p className="px-2 pt-1 pb-1.5 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/60">
+                  Core
+                </p>
+                {primaryNavItems.map(({ to, label, icon: Icon }) => (
                   <NavLink
                     key={to}
                     to={to}
@@ -287,6 +321,26 @@ export default function Navbar() {
                     <Icon size={14} />
                     {label}
                   </NavLink>
+                ))}
+                {/* Grouped sections */}
+                {moreGroups.map((group) => (
+                  <div key={group.label}>
+                    <div className="border-t border-border/60 my-1.5" />
+                    <p className="px-2 pt-1 pb-1.5 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/60">
+                      {group.label}
+                    </p>
+                    {group.items.map(({ to, label, icon: Icon }) => (
+                      <NavLink
+                        key={to}
+                        to={to}
+                        onClick={() => setMobileOpen(false)}
+                        className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+                      >
+                        <Icon size={14} />
+                        {label}
+                      </NavLink>
+                    ))}
+                  </div>
                 ))}
               </div>
             </motion.div>

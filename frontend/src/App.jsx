@@ -14,6 +14,8 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import RecruiterPage from "./pages/RecruiterPage";
 import MockInterviewPage from "./pages/MockInterviewPage";
+import VoiceAssistantPage from "./pages/VoiceAssistantPage";
+import BattlePage from "./pages/BattlePage";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -32,6 +34,8 @@ function AnimatedRoutes() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/recruiter" element={<RecruiterPage />} />
         <Route path="/interview" element={<MockInterviewPage />} />
+        <Route path="/voice-assistant" element={<VoiceAssistantPage />} />
+        <Route path="/battle" element={<BattlePage />} />
       </Routes>{" "}
     </AnimatePresence>
   );

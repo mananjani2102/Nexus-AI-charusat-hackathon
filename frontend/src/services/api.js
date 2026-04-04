@@ -65,3 +65,22 @@ export const transcribeInterviewAudio = async (audioBlob, mimeType = "audio/webm
   });
   return data;
 };
+
+export const chatWithVoiceAssistant = async (message, resumeText, jobRole, history) => {
+  const { data } = await api.post('/voice-assistant/chat', {
+    message,
+    resumeText: resumeText || '',
+    jobRole: jobRole || 'Software Engineer',
+    history: history || [],
+  });
+  return data;
+};
+
+export const battleResumes = async (file1, file2, jobDescription) => {
+  const formData = new FormData();
+  formData.append('resume1', file1);
+  formData.append('resume2', file2);
+  formData.append('jobDescription', jobDescription || '');
+  const { data } = await api.post('/battle', formData, { timeout: 60000 });
+  return data;
+};
