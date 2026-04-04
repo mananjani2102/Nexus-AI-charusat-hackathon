@@ -67,7 +67,7 @@ Return ONLY a valid JSON array (no markdown), one object per resume:
     "top_keyword_missing": "single most important missing keyword"
   }
 ]
-Vary the scores realistically based on actual resume quality.`;
+Apply strict, objective, and deterministic scoring algorithms. If two resumes have identical content, they MUST receive the exact same scores. Do not add arbitrary variance.`;
 
     let results;
 
@@ -81,6 +81,8 @@ Vary the scores realistically based on actual resume quality.`;
       const response = await openai.chat.completions.create({
         model: "llama-3.1-8b-instant",
         messages: [{ role: "user", content: prompt }],
+        temperature: 0.1,
+        top_p: 0.8,
       });
 
       const raw = response.choices[0].message.content;
