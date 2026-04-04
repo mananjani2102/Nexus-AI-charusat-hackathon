@@ -4,7 +4,7 @@
 
 <br>
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=24&duration=2800&pause=900&color=7C3AED&center=true&vCenter=true&random=false&width=960&lines=Upload+PDF+or+DOCX.+Get+Scored+by+AI.+Download+in+Seconds.;ATS+Score+%7C+Keyword+Gap+%7C+Clarity+Score+%7C+STAR+Bullets;Live+Speech+Intelligence+%7C+Mock+Interview+%7C+Recruiter+Mode;Groq+LLaMA+3.1+8B+Instant+%E2%80%94+Ultra+Fast+Inference;Your+Resume.+Supercharged.+Interview-Ready.)](https://github.com/mananjani2102)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=24&duration=2800&pause=900&color=7C3AED&center=true&vCenter=true&random=false&width=960&lines=Upload+PDF+or+DOCX.+Get+Scored+by+AI.+Download+in+Seconds.;ATS+Score+%7C+Keyword+Gap+%7C+Clarity+Score+%7C+STAR+Bullets;Live+Speech+Intelligence+%7C+Mock+Interview+%7C+Recruiter+Mode;Voice+Resume+Assistant+%7C+Resume+Battle+Mode;Groq+LLaMA+3.1+8B+Instant+%E2%80%94+Ultra+Fast+Inference;Your+Resume.+Supercharged.+Interview-Ready.)](https://github.com/mananjani2102)
 
 <br>
 
@@ -41,10 +41,13 @@
   x  Interview prep is generic — not based on your actual resume
   x  No way to practice speaking your answers out loud
   x  Recruiters have no tool to rank multiple candidates at once
+  x  No way to know if your resume beats the competition
 
   +  Nexus AI scores, rewrites, preserves, and downloads — end to end
   +  Live AI Mock Interview with real-time speech intelligence
   +  Recruiter Mode — rank up to 20 resumes by AI score instantly
+  +  Voice Resume Assistant — ask anything about your resume by voice
+  +  Resume Battle Mode — two resumes, one job, only one wins
 ```
 
 <div align="center">
@@ -64,6 +67,8 @@
 <img src="https://img.shields.io/badge/No%20Speech%20Analysis-555555?style=flat-square" />
 <img src="https://img.shields.io/badge/No%20Bulk%20Ranking-555555?style=flat-square" />
 <img src="https://img.shields.io/badge/No%20DOCX%20Download-555555?style=flat-square" />
+<img src="https://img.shields.io/badge/No%20Voice%20Assistant-555555?style=flat-square" />
+<img src="https://img.shields.io/badge/No%20Resume%20Battle-555555?style=flat-square" />
 
 </td>
 <td align="center" width="50%">
@@ -77,6 +82,8 @@
 <img src="https://img.shields.io/badge/Live%20Speech%20Intelligence-EF4444?style=flat-square" />
 <img src="https://img.shields.io/badge/Recruiter%20Bulk%20Ranking-7C3AED?style=flat-square" />
 <img src="https://img.shields.io/badge/Download%20as%20DOCX-3B82F6?style=flat-square" />
+<img src="https://img.shields.io/badge/Voice%20Resume%20Assistant-10B981?style=flat-square" />
+<img src="https://img.shields.io/badge/Resume%20Battle%20Mode-EF4444?style=flat-square" />
 
 </td>
 </tr>
@@ -236,6 +243,30 @@ JWT-based login with bcrypt password hashing. Session persists with a **7-day to
 
 </td>
 </tr>
+<tr>
+<td align="center" width="25%">
+
+<img src="https://user-images.githubusercontent.com/74038190/212257454-16e3712e-945a-4ca2-b238-408ad0bf87e6.gif" width="90"/>
+
+### Voice Resume Assistant
+Ask anything about your resume **by voice or text**. AI answers with specific, actionable advice based on your actual resume content and reads the response aloud automatically.
+
+<img src="https://img.shields.io/badge/Voice%20%2B%20Text-10B981?style=flat-square" />
+<img src="https://img.shields.io/badge/Resume%20Aware-7C3AED?style=flat-square" />
+
+</td>
+<td align="center" width="25%">
+
+<img src="https://user-images.githubusercontent.com/74038190/212257472-08e52665-c503-4bd9-aa20-f5a4dae769b5.gif" width="90"/>
+
+### Resume Battle Mode
+Upload **two resumes against one job description**. AI scores both head-to-head, declares a winner with keyword edge analysis, and gives a verdict per candidate. No other tool does this.
+
+<img src="https://img.shields.io/badge/Head%20to%20Head-EF4444?style=flat-square" />
+<img src="https://img.shields.io/badge/AI%20Verdict-7C3AED?style=flat-square" />
+
+</td>
+</tr>
 </table>
 </div>
 
@@ -259,6 +290,27 @@ entirely in your browser, with zero server calls:
 
 All three metrics update on screen as you speak.
 Zero latency. Zero API calls. 100% browser-native — powered by the Web Speech API.
+```
+
+<br>
+
+<div align="center">
+
+---
+
+### Resume Battle Mode — The Feature That Wins Hackathons
+
+</div>
+
+```
+Two resumes. One job description. Only one gets hired.
+
+  Upload Challenger 1  ->  AI scores strengths, weaknesses, verdict
+  Upload Challenger 2  ->  AI scores strengths, weaknesses, verdict
+  Head-to-Head Result  ->  Winner declared with exact keyword edge
+  Margin Label         ->  "Close Fight" / "Clear Win" / "Landslide"
+
+No other resume tool on the market does live head-to-head resume comparison.
 ```
 
 <br>
@@ -297,7 +349,7 @@ Zero latency. Zero API calls. 100% browser-native — powered by the Web Speech 
 <tr>
 <td align="center"><img src="https://img.shields.io/badge/Routing-3B82F6?style=flat-square" /></td>
 <td align="center"><strong>React Router v6</strong></td>
-<td>Declarative client-side routing across 8 pages</td>
+<td>Declarative client-side routing across 12 pages</td>
 </tr>
 <tr>
 <td align="center"><img src="https://img.shields.io/badge/Animation-10B981?style=flat-square" /></td>
@@ -318,6 +370,11 @@ Zero latency. Zero API calls. 100% browser-native — powered by the Web Speech 
 <td align="center"><img src="https://img.shields.io/badge/Styling-7C3AED?style=flat-square" /></td>
 <td align="center"><strong>Tailwind CSS</strong></td>
 <td>Utility-first styling with custom CSS variables for dark mode theming</td>
+</tr>
+<tr>
+<td align="center"><img src="https://img.shields.io/badge/Speech-10B981?style=flat-square" /></td>
+<td align="center"><strong>Web Speech API</strong></td>
+<td>Browser-native voice input and speech synthesis — powers Voice Assistant and Live Speech Intelligence with zero server calls</td>
 </tr>
 </table>
 
@@ -348,7 +405,7 @@ Zero latency. Zero API calls. 100% browser-native — powered by the Web Speech 
 <tr>
 <td align="center"><img src="https://img.shields.io/badge/AI-10B981?style=flat-square" /></td>
 <td align="center"><strong>Groq — LLaMA 3.1 8B Instant</strong></td>
-<td>Ultra-fast inference for scoring, rewriting, bullet improvement, and interview questions</td>
+<td>Ultra-fast inference for scoring, rewriting, bullet improvement, interview questions, voice assistant, and battle mode</td>
 </tr>
 <tr>
 <td align="center"><img src="https://img.shields.io/badge/Upload-F59E0B?style=flat-square" /></td>
@@ -406,6 +463,8 @@ flowchart LR
     E -->|Yes| G([AI Rewrite\nvia Groq])
     E -->|No| Z([Return\nResults])
     G -->|Inject Back| I([DOCX\nDownload Ready])
+    Z --> VA([Voice Assistant\nQ&A Loop])
+    Z --> BM([Battle Mode\nHead-to-Head])
 
     style A fill:#7C3AED,stroke:#7C3AED,color:#fff
     style B fill:#3B82F6,stroke:#3B82F6,color:#fff
@@ -415,13 +474,22 @@ flowchart LR
     style G fill:#10B981,stroke:#10B981,color:#fff
     style I fill:#7C3AED,stroke:#7C3AED,color:#fff
     style Z fill:#3B82F6,stroke:#3B82F6,color:#fff
+    style VA fill:#10B981,stroke:#10B981,color:#fff
+    style BM fill:#EF4444,stroke:#EF4444,color:#fff
 ```
 
 <br>
 
-<img src="https://img.shields.io/badge/Step%201-Upload%20Resume-7C3AED?style=for-the-badge&labelColor=0d0d0d" />
-<img src="https://img.shields.io/badge/Step%202-AI%20Scores%20%26%20Identifies%20Gaps-3B82F6?style=for-the-badge&labelColor=0d0d0d" />
-<img src="https://img.shields.io/badge/Step%203-Rewrite%20%26%20Download-10B981?style=for-the-badge&labelColor=0d0d0d" />
+<table>
+<tr>
+<td align="center"><img src="https://img.shields.io/badge/STEP%201-Upload%20Resume-7C3AED?style=for-the-badge&labelColor=0d0d0d" /></td>
+<td align="center"><img src="https://img.shields.io/badge/STEP%202-AI%20Scores%20%26%20Identifies%20Gaps-3B82F6?style=for-the-badge&labelColor=0d0d0d" /></td>
+</tr>
+<tr>
+<td align="center"><img src="https://img.shields.io/badge/STEP%203-Rewrite%20%26%20Download-10B981?style=for-the-badge&labelColor=0d0d0d" /></td>
+<td align="center"><img src="https://img.shields.io/badge/STEP%204-Voice%20Assistant%20%26%20Battle-EF4444?style=for-the-badge&labelColor=0d0d0d" /></td>
+</tr>
+</table>
 
 </div>
 
@@ -451,6 +519,8 @@ nexus-ai/
 |   +-- history.js          <- GET  /history — last 20 analyses
 |   +-- mockInterview.js    <- POST /mock-interview/questions + /evaluate
 |   +-- recruiter.js        <- POST /recruiter/bulk-analyze — rank up to 20 resumes
+|   +-- voiceAssistant.js   <- POST /voice-assistant/chat — resume-aware AI Q&A
+|   +-- battle.js           <- POST /battle — head-to-head resume comparison + verdict
 |
 +-- models/
 |   +-- User.js          <- name · email · bcrypt password
@@ -480,16 +550,18 @@ nexus-ai/
     |   +-- ResumeContext.jsx    <- Global resume + analysis state
     |
     +-- pages/
-    |   +-- LandingPage.jsx        <- Hero · features · CTA
-    |   +-- LoginPage.jsx          <- Login form with validation
-    |   +-- RegisterPage.jsx       <- Registration form
-    |   +-- UploadPage.jsx         <- Drag-and-drop upload + role + JD input
-    |   +-- DashboardPage.jsx      <- Score rings · strengths · rewrite · download
-    |   +-- SuggestionsPage.jsx    <- AI suggestions · keyword gaps
-    |   +-- BulletImproverPage.jsx <- STAR bullet tool standalone
-    |   +-- HistoryPage.jsx        <- Past analysis cards with scores
-    |   +-- MockInterviewPage.jsx  <- Live AI interview + real-time speech intelligence
-    |   +-- RecruiterPage.jsx      <- Bulk upload + AI-ranked candidate leaderboard
+    |   +-- LandingPage.jsx           <- Hero · features · CTA
+    |   +-- LoginPage.jsx             <- Login form with validation
+    |   +-- RegisterPage.jsx          <- Registration form
+    |   +-- UploadPage.jsx            <- Drag-and-drop upload + role + JD input
+    |   +-- DashboardPage.jsx         <- Score rings · strengths · rewrite · download
+    |   +-- SuggestionsPage.jsx       <- AI suggestions · keyword gaps
+    |   +-- BulletImproverPage.jsx    <- STAR bullet tool standalone
+    |   +-- HistoryPage.jsx           <- Past analysis cards with scores
+    |   +-- MockInterviewPage.jsx     <- Live AI interview + real-time speech intelligence
+    |   +-- RecruiterPage.jsx         <- Bulk upload + AI-ranked candidate leaderboard
+    |   +-- VoiceAssistantPage.jsx    <- Resume-aware voice/text AI chat + speech synthesis
+    |   +-- BattlePage.jsx            <- Two-resume head-to-head AI comparison + winner verdict
     |
     +-- services/
     |   +-- api.js         <- Axios instance · all API call functions
@@ -673,6 +745,8 @@ VITE_FIREBASE_APP_ID=
 | `POST` | `/mock-interview/questions` | Generate 5 resume-based interview questions |
 | `POST` | `/mock-interview/evaluate` | Evaluate all 5 answers — content + delivery scores |
 | `POST` | `/recruiter/bulk-analyze` | Upload up to 20 resumes — ranked results by score |
+| `POST` | `/voice-assistant/chat` | Resume-aware AI chat — voice or text, with history |
+| `POST` | `/battle` | Upload 2 resumes — head-to-head AI verdict + keyword edge |
 
 </div>
 
@@ -713,6 +787,51 @@ VITE_FIREBASE_APP_ID=
 }
 ```
 
+### POST `/voice-assistant/chat`
+
+```json
+// Request
+{
+  "message": "What keywords am I missing for this role?",
+  "resumeText": "...",
+  "jobRole": "Backend Engineer",
+  "history": []
+}
+
+// Response 200
+{ "reply": "Based on your resume, you are missing CI/CD, Docker, and system design — all critical for Backend Engineer roles. Add them to your skills section with context from real projects." }
+```
+
+### POST `/battle` — `multipart/form-data`
+
+| Field | Type | Required | Detail |
+|:---|:---|:---:|:---|
+| `resume1` | `File` | **Yes** | `.pdf` or `.docx`, max 5 MB |
+| `resume2` | `File` | **Yes** | `.pdf` or `.docx`, max 5 MB |
+| `jobDescription` | `String` | No | Paste JD for targeted comparison |
+
+```json
+// Response 200
+{
+  "winner": 1,
+  "resume1": {
+    "score": 81,
+    "strengths": ["Strong CI/CD keywords", "Quantified results", "Clear leadership examples"],
+    "weaknesses": ["No cloud certifications", "Summary section weak"],
+    "verdict": "Stronger keyword alignment and measurable impact give this resume the edge."
+  },
+  "resume2": {
+    "score": 67,
+    "strengths": ["Clean formatting", "Good education section", "Relevant projects"],
+    "weaknesses": ["Missing technical keywords", "Bullets lack metrics"],
+    "verdict": "Good foundation but lacks the ATS keywords the job description demands."
+  },
+  "battle_reason": "Resume 1 directly addresses 8 of the 10 keywords in the job description with quantified results. Resume 2 covers only 4 and relies on vague action verbs.",
+  "keyword_edge": ["CI/CD", "Docker", "REST API", "system design"],
+  "margin": "Clear Win"
+}
+```
+
 ### POST `/improve-bullet`
 
 ```json
@@ -728,34 +847,6 @@ VITE_FIREBASE_APP_ID=
     "action": "Root-cause analysis + unit test coverage per fix",
     "result": "25% drop in failed transactions, zero regressions"
   }
-}
-```
-
-### POST `/interview-questions`
-
-```json
-// Request
-{
-  "jobRole": "Backend Engineer",
-  "strengths": ["System design", "Node.js"],
-  "weaknesses": ["Cloud gaps"],
-  "ats_keywords_missing": ["Docker", "CI/CD"]
-}
-
-// Response 200
-{ "questions": ["Walk me through a system you designed end-to-end.", "..."] }
-```
-
-### POST `/rewrite-resume`
-
-```json
-// Response 200
-{
-  "rewritten": "<div>...AI-improved HTML with original styles...</div>",
-  "docxBase64": "UEsDBBQABgAIAAAAIQ...",
-  "changes": [
-    { "original": "Worked on backend", "improved": "Engineered scalable REST APIs serving 10K+ requests/day" }
-  ]
 }
 ```
 
