@@ -67,7 +67,16 @@ export const ContextualAIBar = ({
                         />
                     )}
 
-                    <div className="relative z-10 text-emerald-500">{sparkleIcon}</div>
+                    <motion.div
+                        className="relative z-10 text-emerald-500"
+                        animate={{
+                            scale: [1, 1.15, 1],
+                            filter: ["drop-shadow(0 0 0px rgba(16, 185, 129, 0))", "drop-shadow(0 0 4px rgba(16, 185, 129, 0.4))", "drop-shadow(0 0 0px rgba(16, 185, 129, 0))"]
+                        }}
+                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                        {sparkleIcon}
+                    </motion.div>
                 </motion.button>
             </motion.div>
 
