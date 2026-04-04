@@ -12,9 +12,8 @@ export const analyzeResume = async (file, jobRole, jdText) => {
   if (jdText) {
     formData.append("jobDescription", jdText);
   }
-  const { data } = await api.post("/analyze", formData, {
-    headers: { "Content-Type": "multipart/form-data" },
-  });
+  // Let axios set multipart boundary — manual Content-Type breaks file uploads
+  const { data } = await api.post("/analyze", formData);
   return data;
 };
 export const improveBullet = async (bullet, jobRole) => {
@@ -41,8 +40,28 @@ export const bulkAnalyzeResumes = async (files, jobRole) => {
   files.forEach(f => formData.append('resumes', f));
   formData.append('jobRole', jobRole);
   const { data } = await api.post('/recruiter/bulk-analyze', formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
     timeout: 180000,
+  });
+  return data;
+};
+
+export const generateMockQuestions = async (resumeText, jobRole) => {
+  const { data } = await api.post("/mock-interview/questions", { resumeText, jobRole });
+  return data;
+};
+
+export const evaluateInterview = async (jobRole, qa, speechStats) => {
+  const { data } = await api.post("/mock-interview/evaluate", { jobRole, qa, speechStats }, { timeout: 120000 });
+  return data;
+};
+
+/** Server-side STT (Groq Whisper). Pass a Blob from MediaRecorder (e.g. audio/webm). */
+export const transcribeInterviewAudio = async (audioBlob, mimeType = "audio/webm") => {
+  const ext = mimeType.includes("mp4") || mimeType.includes("m4a") ? "m4a" : "webm";
+  const formData = new FormData();
+  formData.append("audio", audioBlob, `recording.${ext}`);
+  const { data } = await api.post("/mock-interview/transcribe", formData, {
+    timeout: 120000,
   });
   return data;
 };

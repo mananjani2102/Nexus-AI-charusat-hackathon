@@ -11,27 +11,57 @@ import {
   X,
   LogOut,
   Users,
+  Mic,
+  ChevronDown,
+  MoreHorizontal,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import logoUrl from "../assets/nexus-logo-01.png";
 import { useAuth } from "../context/AuthContext";
 import { useResume } from "../context/ResumeContext";
-const navItems = [
+
+const primaryNavItems = [
   { to: "/", label: "Home", icon: Zap },
   { to: "/upload", label: "Upload", icon: Upload },
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { to: "/suggestions", label: "AI Fixes", icon: Lightbulb },
   { to: "/bullet", label: "Bullet Pro", icon: Sparkles },
+];
+
+const moreNavItems = [
   { to: "/history", label: "History", icon: History },
   { to: "/recruiter", label: "Recruiter", icon: Users },
+  { to: "/interview", label: "Interview", icon: Mic },
 ];
+
+const allNavItems = [...primaryNavItems, ...moreNavItems];
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const { user, logout } = useAuth();
   const { history } = useResume();
+  const moreRef = useRef(null);
+
+  // Close "More" dropdown on outside click
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (moreRef.current && !moreRef.current.contains(e.target)) {
+        setMoreOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  // Check if any "more" item is active
+  const isMoreActive = moreNavItems.some((item) =>
+    item.to === "/" ? location.pathname === "/" : location.pathname.startsWith(item.to)
+  );
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -47,8 +77,10 @@ export default function Navbar() {
               <span className="text-nexus-text"> AI</span>
             </span>
           </NavLink>
+
+          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1 relative">
-            {navItems.map(({ to, label, icon: Icon }) => {
+            {primaryNavItems.map(({ to, label, icon: Icon }) => {
               const isActive =
                 to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
               return (
@@ -60,11 +92,6 @@ export default function Navbar() {
                 >
                   <Icon size={14} />
                   {label}
-                  {to === "/history" && history?.length > 0 && (
-                    <span className="w-4 h-4 rounded-full bg-primary text-background flex items-center justify-center text-[9px] font-bold absolute -top-1 -right-1">
-                      {history.length}
-                    </span>
-                  )}
                   {isActive && (
                     <motion.div
                       layoutId="nav-dot"
@@ -74,7 +101,66 @@ export default function Navbar() {
                 </NavLink>
               );
             })}
+
+            {/* More dropdown */}
+            <div className="relative" ref={moreRef}>
+              <button
+                onClick={() => setMoreOpen((prev) => !prev)}
+                className={`nav-link relative flex items-center gap-1 ${isMoreActive ? "active" : ""}`}
+              >
+                <MoreHorizontal size={14} />
+                More
+                <ChevronDown
+                  size={12}
+                  className={`transition-transform duration-200 ${moreOpen ? "rotate-180" : ""}`}
+                />
+                {isMoreActive && (
+                  <motion.div
+                    layoutId="nav-dot"
+                    className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
+                  />
+                )}
+              </button>
+
+              <AnimatePresence>
+                {moreOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full right-0 mt-2 w-48 glass-card p-2 z-50"
+                  >
+                    {moreNavItems.map(({ to, label, icon: Icon }) => {
+                      const isActive = location.pathname.startsWith(to);
+                      return (
+                        <NavLink
+                          key={to}
+                          to={to}
+                          onClick={() => setMoreOpen(false)}
+                          className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                            isActive
+                              ? "bg-primary/15 text-primary"
+                              : "text-nexus-muted hover:text-nexus-text hover:bg-white/5"
+                          }`}
+                        >
+                          <Icon size={15} className={isActive ? "text-primary" : ""} />
+                          {label}
+                          {to === "/history" && history?.length > 0 && (
+                            <span className="ml-auto w-5 h-5 rounded-full bg-primary text-background flex items-center justify-center text-[10px] font-bold">
+                              {history.length}
+                            </span>
+                          )}
+                        </NavLink>
+                      );
+                    })}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
+
+          {/* Right side */}
           <div className="hidden md:flex items-center gap-3">
             <div className="flex items-center gap-1.5 text-xs text-nexus-muted mr-2">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -162,6 +248,8 @@ export default function Navbar() {
               </NavLink>
             )}
           </div>
+
+          {/* Mobile hamburger */}
           <button
             className="md:hidden btn-ghost p-2"
             onClick={() => setOpen((o) => !o)}
@@ -170,6 +258,8 @@ export default function Navbar() {
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </nav>
+
+        {/* Mobile menu - shows all items */}
         {open && (
           <motion.div
             initial={{ opacity: 0, y: -8 }}
@@ -177,7 +267,7 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -8 }}
             className="mt-2 glass-card px-4 py-3 flex flex-col gap-1 md:hidden"
           >
-            {navItems.map(({ to, label, icon: Icon }) => (
+            {allNavItems.map(({ to, label, icon: Icon }) => (
               <NavLink
                 key={to}
                 to={to}
