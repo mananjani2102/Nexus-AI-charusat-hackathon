@@ -35,3 +35,14 @@ export const rewriteResume = async (payload) => {
   const { data } = await api.post("/rewrite-resume", payload);
   return data;
 };
+
+export const bulkAnalyzeResumes = async (files, jobRole) => {
+  const formData = new FormData();
+  files.forEach(f => formData.append('resumes', f));
+  formData.append('jobRole', jobRole);
+  const { data } = await api.post('/recruiter/bulk-analyze', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+    timeout: 180000,
+  });
+  return data;
+};

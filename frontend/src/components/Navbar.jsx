@@ -10,6 +10,7 @@ import {
   Menu,
   X,
   LogOut,
+  Users,
 } from "lucide-react";
 import { useState } from "react";
 import logoUrl from "../assets/nexus-logo-01.png";
@@ -22,6 +23,7 @@ const navItems = [
   { to: "/suggestions", label: "AI Fixes", icon: Lightbulb },
   { to: "/bullet", label: "Bullet Pro", icon: Sparkles },
   { to: "/history", label: "History", icon: History },
+  { to: "/recruiter", label: "Recruiter", icon: Users },
 ];
 export default function Navbar() {
   const [open, setOpen] = useState(false);

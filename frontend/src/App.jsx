@@ -12,6 +12,7 @@ import BulletImproverPage from "./pages/BulletImproverPage";
 import HistoryPage from "./pages/HistoryPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import RecruiterPage from "./pages/RecruiterPage";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -28,6 +29,7 @@ function AnimatedRoutes() {
         <Route path="/history" element={<HistoryPage />} />{" "}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/recruiter" element={<RecruiterPage />} />
       </Routes>{" "}
     </AnimatePresence>
   );
